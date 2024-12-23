@@ -9,33 +9,40 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #000000; /* Black background */
-    color: #ddd; /* Light text color for readability */
-    margin: 0;
+    color: #fff; /* Light text color for readability */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height to center the content */
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
 }
 
-/* Main Container */
-section {
+/* Main Content */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Portfolio Details Section */
+section.portfolio-details {
     background-color: #f9f9f9; /* Off-white background */
+    color: #333; /* Text color for contrast */
     padding: 2rem;
     width: 90%;
     max-width: 800px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow */
     border-radius: 10px; /* Rounded corners */
     text-align: left;
 }
 
-/* Highlight Class for Emphasis */
-.highlight {
-    color: #4CAF50; /* Green text color */
-    font-weight: bold;
-    font-size: 1.1rem;
-    background-color: #e8f5e9; /* Light green background */
-    padding: 2px 4px;
-    border-radius: 4px;
+/* Section Title */
+section.portfolio-details h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
 }
 
 /* Definition List */
@@ -55,7 +62,7 @@ dl dd {
 
 /* Responsive Design */
 @media (max-width: 600px) {
-    section {
+    section.portfolio-details {
         padding: 1.5rem;
     }
 
