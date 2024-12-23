@@ -116,12 +116,6 @@ dl dd {
     line-height: 1.6;
 }
 
-/* Highlighted Elements */
-.highlight {
-    color: #4CAF50; /* Green color for emphasis */
-    font-weight: bold;
-}
-
 /* Blockquote */
 blockquote {
     font-style: italic;
