@@ -8,7 +8,7 @@
 /* Global Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f9fafb; /* Softer background for a modern look */
+    background-color: #000000; /* Set the background to black */
     color: #333; /* Balanced contrast for text */
     margin: 0;
     padding: 20px;
@@ -20,7 +20,7 @@ body {
 
 /* Main Container */
 section {
-    background-color: #ffffff;
+    background-color: #f9f9f9; /* Off-white background for the portfolio details section */
     padding: 2rem;
     width: 90%;
     max-width: 800px;
