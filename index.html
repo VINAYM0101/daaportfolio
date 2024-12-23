@@ -8,14 +8,72 @@
     <title>[Your Name]'s Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000; /* Set background color to black */
+            color: #fff; /* Default text color to white */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Portfolio Details Section */
+        .portfolio-details {
+            background-color: #121212; /* Dark grey for section background */
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .portfolio-details h2 {
+            color: #ffcc00; /* Highlighted header color */
+            text-align: center;
+        }
+
+        dl {
+            margin-top: 1.5rem;
+        }
+
+        dt {
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        dd {
+            margin-left: 1.5rem;
+            color: #ccc; /* Subtle grey for details */
+        }
+
+        /* Highlighted Project 1 Section */
+        dl dt:first-child,
+        dl dd:first-child {
+            color: #ffcc00; /* Bright yellow for emphasis */
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
     <!-- Main Content -->
     <main>
         <!-- Portfolio Details Section -->
         <section class="portfolio-details">
-            <h2><i class="fas fa-info-circle"></i> Portfolio Details</h2>
+            <h2>Portfolio Details</h2>
             <dl>
                 <dt>Project</dt>
                 <dd><strong>Project 1</strong>: A short description of your first project, highlighting key features.</dd>
