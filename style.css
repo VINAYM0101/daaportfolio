@@ -31,11 +31,6 @@ section {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-section:hover {
-    transform: translateY(-5px); /* Adds slight interactivity */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced on hover */
-}
-
 /* Header */
 header {
     background-color: #4CAF50;
