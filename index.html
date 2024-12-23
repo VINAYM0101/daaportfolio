@@ -54,6 +54,31 @@
             color: #ccc; /* Subtle grey for details */
         }
 
+        /* Highlighted Fields */
+        dt:nth-child(1), /* Course Name */
+        dt:nth-child(3), /* Course Code */
+        dt:nth-child(5), /* Name */
+        dt:nth-child(7), /* SRN */
+        dt:nth-child(9), /* Course Instructor */
+        dt:nth-child(11), /* University */
+        dt:nth-child(13) /* Portfolio Topic/Domain */
+        {
+            color: #ffcc00; /* Bright yellow for emphasis */
+            font-size: 1.2rem;
+        }
+
+        dd:nth-child(2), /* Course Name Value */
+        dd:nth-child(4), /* Course Code Value */
+        dd:nth-child(6), /* Name Value */
+        dd:nth-child(8), /* SRN Value */
+        dd:nth-child(10), /* Course Instructor Value */
+        dd:nth-child(12), /* University Value */
+        dd:nth-child(14) /* Portfolio Topic/Domain Value */
+        {
+            color: #f1f1f1; /* Light color for the details */
+            font-weight: bold;
+        }
+
         /* Highlighted Project 1 Section */
         dl dt:first-child,
         dl dd:first-child {
@@ -84,7 +109,7 @@
                 <dd>Algorithmic Problem Solving</dd>
 
                 <dt>Course Code</dt>
-                <dd>Course Code Placeholder</dd>
+                <dd>CS101</dd>
 
                 <dt>Name</dt>
                 <dd>Your Name</dd>
