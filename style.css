@@ -8,92 +8,34 @@
 /* Global Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #000000; /* Set the background to black */
-    color: #333; /* Balanced contrast for text */
+    background-color: #000000; /* Black background */
+    color: #ddd; /* Light text color for readability */
     margin: 0;
-    padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    align-items: center;
+    height: 100vh; /* Full viewport height to center the content */
 }
 
 /* Main Container */
 section {
-    background-color: #f9f9f9; /* Off-white background for the portfolio details section */
+    background-color: #f9f9f9; /* Off-white background */
     padding: 2rem;
     width: 90%;
     max-width: 800px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border-radius: 10px; /* Smoother corners */
-    text-align: center;
-    margin-top: 40px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px; /* Rounded corners */
+    text-align: left;
 }
 
-/* Header */
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 2rem;
-    border-radius: 10px 10px 0 0; /* Rounded only at the top for a card look */
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-    font-size: 2.2rem;
-    margin: 0;
-    line-height: 1.3;
-    letter-spacing: 0.5px; /* Slight spacing for clarity */
-}
-
-header p {
-    margin: 1rem 0 0;
-    font-size: 1rem;
-    opacity: 0.9; /* Softer subtext */
-}
-
-/* Section Titles */
-h2 {
-    color: #4CAF50;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    border-bottom: 2px solid #e7f7e7; /* Underline for emphasis */
-    display: inline-block;
-    padding-bottom: 0.3rem;
-}
-
-/* List Items */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    background-color: #f0f9f0; /* Softer green shade for better contrast */
-    margin-bottom: 0.75rem; /* More spacing for a cleaner layout */
-    padding: 1rem;
-    border-radius: 8px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-ul li:hover {
-    background-color: #e0f2e0; /* Slightly brighter on hover */
-    transform: translateY(-3px);
-}
-
-/* Links */
-a {
-    color: #4CAF50;
-    text-decoration: none;
+/* Highlight Class for Emphasis */
+.highlight {
+    color: #4CAF50; /* Green text color */
     font-weight: bold;
-    transition: color 0.2s ease;
-}
-
-a:hover {
-    color: #3b9c40; /* Darker green for a richer hover effect */
-    text-decoration: underline;
+    font-size: 1.1rem;
+    background-color: #e8f5e9; /* Light green background */
+    padding: 2px 4px;
+    border-radius: 4px;
 }
 
 /* Definition List */
@@ -101,26 +43,14 @@ dl dt {
     font-weight: bold;
     color: #333;
     margin-top: 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 dl dd {
     margin-left: 1.5rem;
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* Blockquote */
-blockquote {
-    font-style: italic;
     color: #555;
-    border-left: 4px solid #4CAF50;
-    padding-left: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    background-color: #f9fdf9; /* Light background for better readability */
-    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 /* Responsive Design */
@@ -129,26 +59,11 @@ blockquote {
         padding: 1.5rem;
     }
 
-    header {
-        padding: 1.5rem;
+    dl dt {
+        font-size: 1rem;
     }
 
-    h2 {
-        font-size: 1.6rem;
+    dl dd {
+        font-size: 0.9rem;
     }
-
-    ul li {
-        padding: 0.75rem;
-    }
-}
-
-/* Custom Focus Styles */
-a:focus {
-    outline: 2px dashed #4CAF50;
-    outline-offset: 3px;
-}
-
-ul li:focus {
-    outline: 2px dashed #4CAF50;
-    outline-offset: 3px;
 }
