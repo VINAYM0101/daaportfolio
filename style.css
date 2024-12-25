@@ -3,8 +3,8 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #1c1c1c;
+    color: #eaeaea;
     line-height: 1.6;
 }
 
@@ -22,7 +22,7 @@ li {
 }
 
 a {
-    color: #0066cc;
+    color: #4a90e2;
     text-decoration: none;
 }
 
@@ -33,7 +33,7 @@ a:hover {
 /* Header Styles */
 .header {
     text-align: center;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #3a3a3a, #6a11cb);
     color: white;
     padding: 20px 10px;
 }
@@ -51,8 +51,8 @@ a:hover {
 /* Section Titles */
 .section-title {
     font-size: 1.8rem;
-    color: #2575fc;
-    border-bottom: 2px solid #2575fc;
+    color: #4a90e2;
+    border-bottom: 2px solid #4a90e2;
     display: inline-block;
     margin-bottom: 15px;
 }
@@ -60,64 +60,86 @@ a:hover {
 /* Projects Section */
 .projects-section {
     padding: 20px;
-    background: white;
+    background: #2a2a2a;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
 }
 
 .project-list li {
-    background: #e3e8fc;
+    background: #3e3e3e;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Skills Section */
 .skills-section {
     padding: 20px;
     margin: 20px;
-    background: #fef6e4;
+    background: #2a2a2a;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.2s ease-in-out;
 }
 
 .skills-list li {
-    background: #f9e7d5;
+    background: #3e3e3e;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Find Me Online Section */
 .findme-section {
     padding: 20px;
-    background: #e8fff4;
+    background: #2a2a2a;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.4s ease-in-out;
 }
 
 .findme-list li {
-    background: #d3fbe2;
+    background: #3e3e3e;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.findme-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Portfolio Details Section */
 .portfolio-details-section {
     padding: 20px;
-    background: white;
+    background: #2a2a2a;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.6s ease-in-out;
 }
 
 .details-list dt {
     font-weight: bold;
     margin-top: 10px;
-    color: #2575fc;
+    color: #4a90e2;
 }
 
 .details-list dd {
@@ -129,9 +151,22 @@ a:hover {
 .footer {
     text-align: center;
     padding: 10px 0;
-    background: #333;
+    background: #1c1c1c;
     color: white;
     position: relative;
     bottom: 0;
     width: 100%;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
