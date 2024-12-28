@@ -36,11 +36,13 @@ a:hover {
     background: linear-gradient(to right, #3a3a3a, #6a11cb);
     color: white;
     padding: 20px 10px;
+    animation: slideDown 1.5s ease-in-out;
 }
 
 .header-title {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .header-subtitle {
@@ -55,6 +57,7 @@ a:hover {
     border-bottom: 2px solid #4a90e2;
     display: inline-block;
     margin-bottom: 15px;
+    animation: pulse 1s infinite;
 }
 
 /* Projects Section */
@@ -73,6 +76,7 @@ a:hover {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: popIn 1s ease;
 }
 
 .project-list li:hover {
@@ -96,6 +100,7 @@ a:hover {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInLeft 1.2s ease;
 }
 
 .skills-list li:hover {
@@ -119,6 +124,7 @@ a:hover {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: zoomIn 1.5s ease;
 }
 
 .findme-list li:hover {
@@ -140,6 +146,7 @@ a:hover {
     font-weight: bold;
     margin-top: 10px;
     color: #4a90e2;
+    animation: fadeInRight 1.6s ease;
 }
 
 .details-list dd {
@@ -168,5 +175,69 @@ a:hover {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
