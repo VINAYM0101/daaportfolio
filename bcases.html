@@ -221,10 +221,186 @@
     <script>
         function showModal(codeId) {
             const codeSnippets = {
-                'dfs_energy_forecast': `function dfs_energy_forecast() {\n  // DFS logic for energy forecasting\n  console.log("Simulating renewable energy production...");\n}`,
-                'dijkstra_optimal_paths': `function dijkstra_optimal_paths() {\n  // Dijkstra's algorithm for optimal paths\n  console.log("Calculating the shortest path for infrastructure...");\n}`,
-                'prims_land_allocation': `function prims_land_allocation() {\n  // Prim's algorithm for land allocation\n  console.log("Finding minimal land areas for renewable energy installation...");\n}`,
-                'quick_sort_materials': `function quick_sort_materials() {\n  // Quick Sort algorithm for sorting materials\n  console.log("Sorting recyclable materials based on factors...");\n}`
+                'dfs_energy_forecast': `
+#include <iostream>
+#include <vector>
+#include <stack>
+
+using namespace std;
+
+void dfs(int node, vector<vector<int>>& adj, vector<bool>& visited) {
+    stack<int> s;
+    s.push(node);
+    visited[node] = true;
+
+    while (!s.empty()) {
+        int u = s.top();
+        s.pop();
+        cout << "Visiting node " << u << endl;
+        for (int v : adj[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                s.push(v);
+            }
+        }
+    }
+}
+
+int main() {
+    int nodes = 5;
+    vector<vector<int>> adj(nodes);
+    adj[0].push_back(1);
+    adj[0].push_back(2);
+    adj[1].push_back(3);
+    adj[3].push_back(4);
+
+    vector<bool> visited(nodes, false);
+    dfs(0, adj, visited);
+
+    return 0;
+}
+                `,
+                'dijkstra_optimal_paths': `
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+
+using namespace std;
+
+void dijkstra(int src, vector<vector<pair<int, int>>>& graph, int n) {
+    vector<int> dist(n, INT_MAX);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    
+    dist[src] = 0;
+    pq.push({0, src});
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        int d = pq.top().first;
+        pq.pop();
+
+        if (d > dist[u]) continue;
+
+        for (auto& edge : graph[u]) {
+            int v = edge.first;
+            int weight = edge.second;
+            if (dist[u] + weight < dist[v]) {
+                dist[v] = dist[u] + weight;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << "Distance from " << src << " to " << i << " is " << dist[i] << endl;
+    }
+}
+
+int main() {
+    int n = 5;
+    vector<vector<pair<int, int>>> graph(n);
+
+    graph[0].push_back({1, 10});
+    graph[0].push_back({2, 5});
+    graph[1].push_back({3, 1});
+    graph[2].push_back({1, 3});
+    graph[2].push_back({3, 9});
+    graph[3].push_back({4, 2});
+
+    dijkstra(0, graph, n);
+    return 0;
+}
+                `,
+                'prims_land_allocation': `
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+
+using namespace std;
+
+void prims(int n, vector<vector<int>>& graph) {
+    vector<int> key(n, INT_MAX);
+    vector<int> parent(n, -1);
+    vector<bool> mstSet(n, false);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+    key[0] = 0;
+    pq.push({0, 0});
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+        mstSet[u] = true;
+
+        for (int v = 0; v < n; v++) {
+            if (graph[u][v] && !mstSet[v] && graph[u][v] < key[v]) {
+                key[v] = graph[u][v];
+                pq.push({key[v], v});
+                parent[v] = u;
+            }
+        }
+    }
+
+    for (int i = 1; i < n; i++) {
+        cout << "Edge: " << parent[i] << " - " << i << " with weight " << graph[i][parent[i]] << endl;
+    }
+}
+
+int main() {
+    int n = 5;
+    vector<vector<int>> graph = {
+        {0, 2, 0, 6, 0},
+        {2, 0, 3, 8, 5},
+        {0, 3, 0, 0, 7},
+        {6, 8, 0, 0, 9},
+        {0, 5, 7, 9, 0}
+    };
+    
+    prims(n, graph);
+    return 0;
+}
+                `,
+                'quick_sort_materials': `
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void quickSort(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        int pivot = arr[high];
+        int i = low - 1;
+        
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr[i], arr[j]);
+            }
+        }
+        swap(arr[i + 1], arr[high]);
+        int pi = i + 1;
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    vector<int> materials = {12, 11, 13, 5, 6, 7};
+    int n = materials.size();
+
+    quickSort(materials, 0, n - 1);
+
+    cout << "Sorted materials: ";
+    for (int i = 0; i < n; i++) {
+        cout << materials[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+                `
             };
 
             // Set the code content
