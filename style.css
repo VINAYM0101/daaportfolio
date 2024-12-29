@@ -14,7 +14,7 @@ h1, h2, h3, p {
 
 /* Header Styling */
 header {
-    background: linear-gradient(135deg, #ff6f61, #d0e0f5); /* Vibrant gradient */
+    background: royalblue; /* Change to royal blue */
     color: white;
     text-align: center;
     padding: 5rem 1rem;
