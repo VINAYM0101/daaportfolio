@@ -25,14 +25,12 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            position: relative; /* For positioning of the heading */
-            transition: margin-top 0.3s ease, padding-top 0.3s ease;
+            margin-top: 40px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            transition: margin-top 0.3s ease;
         }
 
         thead {
@@ -81,47 +79,72 @@
             margin-right: 10px;
         }
 
-        h1 {
-            position: absolute;
-            top: -70px; /* Initially hidden behind the table */
-            left: 50%;
-            transform: translateX(-50%) scale(0); /* Start scaled down */
-            color: black; /* Renewable Energy heading in bold black */
-            font-size: 2rem;
+        .view-code-btn {
+            padding: 5px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-code-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
             font-weight: bold;
-            margin: 0;
-            opacity: 0; /* Hidden initially */
-            z-index: 10; /* Ensure it's above other content */
-            transition: opacity 0.5s ease, transform 0.5s ease, top 0.5s ease, background-color 0.3s ease;
         }
 
-        /* Smoothly show the heading on hover */
-        .table-container:hover h1 {
-            opacity: 1;
-            transform: translateX(-50%) scale(1); /* Scale up to full size */
-            top: -80px; /* Move the heading above the table */
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
 
-        .table-container:hover {
-            margin-top: 40px; /* Move the table down */
-            background-color: #0056b3; /* Royal blue background when hovered */
-            border-radius: 10px;
-            padding-top: 50px; /* Allow space for heading when it pops up */
-        }
-
-        .table-container:hover table {
-            margin-top: 30px; /* Adjust table position when heading pops out */
-        }
-
-        /* Add a subtle shadow to make the heading look like it pops out */
-        .table-container:hover h1 {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .modal-code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            font-family: "Courier New", Courier, monospace;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
+
     <div class="table-container">
-        <h1>Renewable Energy</h1>
         <table>
             <thead>
                 <tr>
@@ -138,32 +161,72 @@
                     <td>Depth-First Search (DFS)</td>
                     <td>Use DFS to explore renewable energy production over time and predict availability.</td>
                     <td>SDG 7: Affordable and Clean Energy</td>
-                    <td class="code">dfs_energy_forecast()</td>
+                    <td class="code">
+                        <button class="view-code-btn" onclick="showModal('dfs_energy_forecast')">View Code</button>
+                    </td>
                 </tr>
                 <tr>
                     <td><i class="fas fa-dollar-sign issue-icon"></i>High Costs</td>
                     <td>Dijkstra's Algorithm</td>
                     <td>Use Dijkstra's to minimize the cost of infrastructure deployment by finding the shortest paths.</td>
                     <td>SDG 9: Industry, Innovation, and Infrastructure</td>
-                    <td class="code">dijkstra_optimal_paths()</td>
+                    <td class="code">
+                        <button class="view-code-btn" onclick="showModal('dijkstra_optimal_paths')">View Code</button>
+                    </td>
                 </tr>
                 <tr>
                     <td><i class="fas fa-map-marked-alt issue-icon"></i>Land Use</td>
                     <td>Prim's Algorithm</td>
                     <td>Use Prim’s Algorithm to identify the minimal land area needed for renewable energy installations.</td>
                     <td>SDG 15: Life on Land</td>
-                    <td class="code">prims_land_allocation()</td>
+                    <td class="code">
+                        <button class="view-code-btn" onclick="showModal('prims_land_allocation')">View Code</button>
+                    </td>
                 </tr>
                 <tr>
                     <td><i class="fas fa-recycle issue-icon"></i>Recycling</td>
                     <td>Quick Sort</td>
                     <td>Use Quick Sort to optimize the sorting of recyclable materials based on various factors.</td>
                     <td>SDG 12: Responsible Consumption and Production</td>
-                    <td class="code">quick_sort_materials()</td>
+                    <td class="code">
+                        <button class="view-code-btn" onclick="showModal('quick_sort_materials')">View Code</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <!-- Modal for code display -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-code" id="codeContent">
+                <!-- Code will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showModal(codeId) {
+            const codeSnippets = {
+                'dfs_energy_forecast': `function dfs_energy_forecast() {\n  // DFS logic for energy forecasting\n}`,
+                'dijkstra_optimal_paths': `function dijkstra_optimal_paths() {\n  // Dijkstra's algorithm for optimal paths\n}`,
+                'prims_land_allocation': `function prims_land_allocation() {\n  // Prim's algorithm for land allocation\n}`,
+                'quick_sort_materials': `function quick_sort_materials() {\n  // Quick Sort algorithm for sorting materials\n}`
+            };
+
+            // Set the code content
+            document.getElementById('codeContent').textContent = codeSnippets[codeId];
+
+            // Show the modal
+            document.getElementById('codeModal').style.display = "block";
+        }
+
+        function closeModal() {
+            // Hide the modal
+            document.getElementById('codeModal').style.display = "none";
+        }
+    </script>
 
 </body>
 </html>
