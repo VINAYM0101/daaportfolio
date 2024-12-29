@@ -14,12 +14,14 @@ h1, h2, h3, p {
 
 /* Header Styling */
 header {
-    background: royalblue; /* Change to royal blue */
+    background: royalblue; /* Royal blue */
     color: white;
     text-align: center;
     padding: 5rem 1rem;
     position: relative;
     animation: fadeIn 2s ease-in-out;
+    border-radius: 10px;
+    margin: 2rem;
 }
 
 header h1 {
@@ -71,14 +73,32 @@ nav ul li a:hover {
 section {
     padding: 4rem 2rem;
     margin: 2rem 0;
+    border-radius: 8px;
     animation: slideUp 1s ease-in-out;
+}
+
+/* Specific Section Backgrounds */
+#projects {
+    background: #0096c7; /* Light blue */
+}
+
+#skills {
+    background: #0077b6; /* Medium blue */
+}
+
+#contact {
+    background: #005f73; /* Dark blue */
+}
+
+#portfolio-details {
+    background: #00b4d8; /* Vibrant turquoise blue */
 }
 
 /* Title Styling */
 h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: #0077b6;
+    color: white; /* White text for contrast */
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -132,6 +152,7 @@ footer {
     padding: 2rem 1rem;
     position: relative;
     margin-top: 2rem;
+    border-radius: 8px;
 }
 
 /* Animations */
