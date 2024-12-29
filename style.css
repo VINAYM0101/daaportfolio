@@ -215,6 +215,7 @@ section {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     opacity: 0;
     animation: fadeInDetails 2s ease-out forwards;
+    text-align: center;
 }
 
 /* Animation for Portfolio Details Fade In */
@@ -382,22 +383,6 @@ section#skills {
     }
 }
 
-.github-btn:hover, .linkedin-btn:hover {
-    animation: buttonEffect 0.5s ease-in-out;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    section {
-        padding: 3rem 1rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
+.btn:hover {
+    animation: buttonEffect 0.3s ease-in-out;
 }
