@@ -139,11 +139,22 @@ nav ul li a:hover {
 section {
     padding: 4rem 2rem;
     margin: 2rem 0;
-    animation: slideUp 1s ease-in-out;
     background-color: #e3f2fd;
     border-radius: 8px;
     opacity: 0;
-    animation: fadeInUp 2s forwards;
+    animation: fadeInSection 2s ease-out forwards;
+}
+
+/* Animation for section fade-in */
+@keyframes fadeInSection {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Hover Effects for Buttons */
@@ -201,9 +212,21 @@ section {
     padding: 2rem;
     border-radius: 8px;
     margin: 2rem 0;
-    opacity: 1; /* Ensure it's visible */
-    animation: fadeInUp 2s ease-out forwards;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeInDetails 2s ease-out forwards;
+}
+
+/* Animation for Portfolio Details Fade In */
+@keyframes fadeInDetails {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #portfolio-details h2 {
