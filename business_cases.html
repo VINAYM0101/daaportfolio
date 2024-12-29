@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Case Studies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #d0e7f9, #c1d7f0);
+            padding-bottom: 80px; /* Add space for the footer */
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .table-container-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        .table-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: black;
+            margin-right: 30px; /* Space between heading and table */
+        }
+
+        .table-container {
+            width: 100%;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #007BFF;
+        }
+
+        thead th {
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        tbody tr {
+            transition: background 0.3s;
+        }
+
+        tbody tr:nth-child(odd) {
+            background: #f0f8ff;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #e1efff;
+        }
+
+        tbody tr:hover {
+            background: #cfe3ff;
+        }
+
+        tbody td {
+            padding: 15px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        tbody td.code {
+            font-family: "Courier New", Courier, monospace;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .issue-icon {
+            margin-right: 10px;
+        }
+
+        .view-code-btn {
+            padding: 5px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-code-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 20%;
+            width: 100%;
+            height: 80%;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            font-family: "Courier New", Courier, monospace;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        Business Case Studies
+    </header>
+
+    <!-- Renewable Energy Table -->
+    <div class="table-container-wrapper">
+        <div class="table-heading">Renewable Energy</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Issues</th>
+                        <th>Algorithm</th>
+                        <th>Description</th>
+                        <th>SDG Goals</th>
+                        <th>Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-bolt issue-icon"></i>Intermittency</td>
+                        <td>Depth-First Search (DFS)</td>
+                        <td>Use DFS to explore renewable energy production over time and predict availability.</td>
+                        <td>SDG 7: Affordable and Clean Energy</td>
+                        <td class="code">
+                            <button class="view-code-btn" onclick="showModal('dfs_energy_forecast')">View Code</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-dollar-sign issue-icon"></i>High Costs</td>
+                        <td>Dijkstra's Algorithm</td>
+                        <td>Use Dijkstra's to minimize the cost of infrastructure deployment by finding the shortest paths.</td>
+                        <td>SDG 9: Industry, Innovation, and Infrastructure</td>
+                        <td class="code">
+                            <button class="view-code-btn" onclick="showModal('dijkstra_optimal_paths')">View Code</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-map-marked-alt issue-icon"></i>Land Use</td>
+                        <td>Prim's Algorithm</td>
+                        <td>Use Prim’s Algorithm to identify the minimal land area needed for renewable energy installations.</td>
+                        <td>SDG 15: Life on Land</td>
+                        <td class="code">
+                            <button class="view-code-btn" onclick="showModal('prims_land_allocation')">View Code</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-recycle issue-icon"></i>Recycling</td>
+                        <td>Quick Sort</td>
+                        <td>Use Quick Sort to optimize the sorting of recyclable materials based on various factors.</td>
+                        <td>SDG 12: Responsible Consumption and Production</td>
+                        <td class="code">
+                            <button class="view-code-btn" onclick="showModal('quick_sort_materials')">View Code</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Smart Governance Approaches Table -->
+    <div class="table-container-wrapper">
+        <div class="table-heading">Smart Governance Approaches</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Issues</th>
+                        <th>Algorithm</th>
+                        <th>Description</th>
+                        <th>SDG Goals</th>
+                        <th>Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-users issue-icon"></i>Public Participation</td>
+                        <td>Breadth-First Search (BFS)</td>
+                        <td>Use BFS to simulate public engagement and interactions for decision-making.</td>
+                        <td>SDG 16: Peace, Justice, and Strong Institutions</td>
+                        <td class="code">
+                            <button class="view-code-btn" onclick="showModal('bfs_public_participation')">View Code</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-comments issue-icon"></i>Transparency</td>
+                        <td>Bellman-Ford Algorithm</td>
+                        <td>Use Bellman-Ford to track and ensure transparency in governance processes.</td>
+                        <td>SDG 16: Peace, Justice, and Strong Institutions</td>
+                        <td class="code">
+                            <button class="view-code-btn" onclick="showModal('bellman_ford_transparency')">View Code</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-cogs issue-icon"></i>Efficiency</td>
+                        <td>Floyd-Warshall Algorithm</td>
+                        <td>Use Floyd-Warshall to optimize resources and ensure the most efficient allocation of services.</td>
+                        <td>SDG 9: Industry, Innovation, and Infrastructure</td>
+                        <td class="code">
+                            <button class="view-code-btn" onclick="showModal('floyd_warshall_efficiency')">View Code</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal for code display -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-code" id="codeContent">
+                <!-- Code will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showModal(codeId) {
+            const codeSnippets = {
+                'dfs_energy_forecast': `
+#include <iostream>
+#include <vector>
+#include <stack>
+
+using namespace std;
+
+void dfs(int node, vector<vector<int>>& adj, vector<bool>& visited) {
+    stack<int> s;
+    s.push(node);
+    visited[node] = true;
+
+    while (!s.empty()) {
+        int u = s.top();
+        s.pop();
+        cout << "Visiting node " << u << endl;
+        for (int v : adj[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                s.push(v);
+            }
+        }
+    }
+}
+
+int main() {
+    int nodes = 5;
+    vector<vector<int>> adj(nodes);
+    adj[0].push_back(1);
+    adj[0].push_back(2);
+    adj[1].push_back(3);
+    adj[3].push_back(4);
+
+    vector<bool> visited(nodes, false);
+    dfs(0, adj, visited);
+
+    return 0;
+}
+                `,
+                'dijkstra_optimal_paths': `
+#include <iostream>
+#include <vector>
+#include <climits>
+#include <queue>
+
+using namespace std;
+
+void dijkstra(int src, vector<vector<pair<int, int>>>& graph, int n) {
+    vector<int> dist(n, INT_MAX);
+    dist[src] = 0;
+
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    pq.push({0, src});
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+
+        for (auto& neighbor : graph[u]) {
+            int v = neighbor.first;
+            int weight = neighbor.second;
+
+            if (dist[u] + weight < dist[v]) {
+                dist[v] = dist[u] + weight;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << "Distance from source " << src << " to node " << i << " is " << dist[i] << endl;
+    }
+}
+
+int main() {
+    int n = 5;
+    vector<vector<pair<int, int>>> graph(n);
+    graph[0].push_back({1, 2});
+    graph[0].push_back({2, 4});
+    graph[1].push_back({3, 1});
+    graph[2].push_back({3, 3});
+
+    dijkstra(0, graph, n);
+
+    return 0;
+}
+                `,
+                'prims_land_allocation': `
+#include <iostream>
+#include <vector>
+#include <climits>
+
+using namespace std;
+
+int minKey(vector<int>& key, vector<bool>& mstSet, int n) {
+    int min = INT_MAX, minIndex;
+    for (int v = 0; v < n; v++) {
+        if (!mstSet[v] && key[v] < min) {
+            min = key[v];
+            minIndex = v;
+        }
+    }
+    return minIndex;
+}
+
+void primsMST(vector<vector<int>>& graph, int n) {
+    vector<int> parent(n, -1);
+    vector<int> key(n, INT_MAX);
+    vector<bool> mstSet(n, false);
+
+    key[0] = 0;
+    for (int count = 0; count < n-1; count++) {
+        int u = minKey(key, mstSet, n);
+        mstSet[u] = true;
+
+        for (int v = 0; v < n; v++) {
+            if (graph[u][v] && !mstSet[v] && graph[u][v] < key[v]) {
+                key[v] = graph[u][v];
+                parent[v] = u;
+            }
+        }
+    }
+
+    for (int i = 1; i < n; i++) {
+        cout << parent[i] << " - " << i << " with weight " << graph[i][parent[i]] << endl;
+    }
+}
+
+int main() {
+    int n = 5;
+    vector<vector<int>> graph = {
+        {0, 2, 0, 6, 0},
+        {2, 0, 3, 8, 5},
+        {0, 3, 0, 0, 7},
+        {6, 8, 0, 0, 9},
+        {0, 5, 7, 9, 0}
+    };
+
+    primsMST(graph, n);
+
+    return 0;
+}
+                `,
+                'quick_sort_materials': `
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void quickSort(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        int pivot = arr[high];
+        int i = (low - 1);
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr[i], arr[j]);
+            }
+        }
+        swap(arr[i + 1], arr[high]);
+        quickSort(arr, low, i);
+        quickSort(arr, i + 2, high);
+    }
+}
+
+int main() {
+    vector<int> arr = {10, 80, 30, 90, 40, 50, 70};
+    quickSort(arr, 0, arr.size() - 1);
+
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+    return 0;
+}
+                `,
+                'bfs_public_participation': `
+#include <iostream>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+void bfs(int start, vector<vector<int>>& adj, int n) {
+    vector<bool> visited(n, false);
+    queue<int> q;
+
+    visited[start] = true;
+    q.push(start);
+
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        cout << "Visiting node " << node << endl;
+
+        for (int neighbor : adj[node]) {
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                q.push(neighbor);
+            }
+        }
+    }
+}
+
+int main() {
+    int nodes = 6;
+    vector<vector<int>> adj(nodes);
+    adj[0].push_back(1);
+    adj[0].push_back(2);
+    adj[1].push_back(3);
+    adj[3].push_back(4);
+    adj[3].push_back(5);
+
+    bfs(0, adj, nodes);
+
+    return 0;
+}
+                `,
+                'bellman_ford_transparency': `
+#include <iostream>
+#include <vector>
+#include <climits>
+
+using namespace std;
+
+void bellmanFord(vector<vector<int>>& graph, int V, int src) {
+    vector<int> dist(V, INT_MAX);
+    dist[src] = 0;
+
+    for (int i = 0; i < V - 1; i++) {
+        for (int u = 0; u < V; u++) {
+            for (int v = 0; v < V; v++) {
+                if (dist[u] != INT_MAX && graph[u][v] != 0 && dist[u] + graph[u][v] < dist[v]) {
+                    dist[v] = dist[u] + graph[u][v];
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < V; i++) {
+        cout << "Distance from source " << src << " to node " << i << " is " << dist[i] << endl;
+    }
+}
+
+int main() {
+    int V = 4;
+    vector<vector<int>> graph = {
+        {0, 10, 0, 0},
+        {10, 0, 5, 0},
+        {0, 5, 0, 1},
+        {0, 0, 1, 0}
+    };
+
+    bellmanFord(graph, V, 0);
+
+    return 0;
+}
+                `,
+                'floyd_warshall_efficiency': `
+#include <iostream>
+#include <vector>
+#include <climits>
+
+using namespace std;
+
+void floydWarshall(int n, vector<vector<int>>& graph) {
+    vector<vector<int>> dist = graph;
+
+    for (int k = 0; k < n; k++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (dist[i][k] != INT_MAX && dist[k][j] != INT_MAX &&
+                    dist[i][j] > dist[i][k] + dist[k][j]) {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (dist[i][j] == INT_MAX) {
+                cout << "INF ";
+            } else {
+                cout << dist[i][j] << " ";
+            }
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n = 4;
+    vector<vector<int>> graph = {
+        {0, 3, INT_MAX, 7},
+        {3, 0, 1, INT_MAX},
+        {INT_MAX, 1, 0, 2},
+        {7, INT_MAX, 2, 0}
+    };
+
+    floydWarshall(n, graph);
+    return 0;
+}
+                `
+            };
+
+            document.getElementById('codeContent').innerText = codeSnippets[codeId];
+            document.getElementById('codeModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('codeModal').style.display = 'none';
+        }
+    </script>
+
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2024 Vinay Madgi | All rights reserved.
+    </footer>
+</body>
+</html>
