@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issues Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 1200px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #4CAF50;
+            color: white;
+        }
+
+        thead th {
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        tbody tr {
+            transition: background 0.3s;
+        }
+
+        tbody tr:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #eaf3f3;
+        }
+
+        tbody tr:hover {
+            background: #d1e7dd;
+        }
+
+        tbody td {
+            padding: 15px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        tbody td.code {
+            font-family: "Courier New", Courier, monospace;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Issues</th>
+                    <th>Algorithm</th>
+                    <th>Description</th>
+                    <th>SDG Goals</th>
+                    <th>Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Intermittency</td>
+                    <td>Forecasting Algorithms</td>
+                    <td>Predict renewable energy availability using weather data.</td>
+                    <td>SDG 7: Affordable and Clean Energy</td>
+                    <td class="code">weather_forecast()</td>
+                </tr>
+                <tr>
+                    <td>High Costs</td>
+                    <td>Cost Optimization</td>
+                    <td>Minimize installation costs through optimal resource allocation.</td>
+                    <td>SDG 9: Industry, Innovation, and Infrastructure</td>
+                    <td class="code">optimize_costs()</td>
+                </tr>
+                <tr>
+                    <td>Land Use</td>
+                    <td>GIS Mapping</td>
+                    <td>Identify optimal land areas for renewable installations.</td>
+                    <td>SDG 15: Life on Land</td>
+                    <td class="code">land_analysis()</td>
+                </tr>
+                <tr>
+                    <td>Recycling</td>
+                    <td>Lifecycle Analysis</td>
+                    <td>Track material use for improved recycling methods.</td>
+                    <td>SDG 12: Responsible Consumption and Production</td>
+                    <td class="code">lifecycle_tracker()</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
