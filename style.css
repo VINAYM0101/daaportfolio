@@ -129,20 +129,19 @@ dd {
     background: #00b4d8; /* Vibrant turquoise blue */
     padding: 3rem 2rem;
     border-radius: 8px;
-    text-align: center; /* Centers text inside */
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers all items horizontally */
-    justify-content: center; /* Centers content vertically */
+    align-items: center;
+    justify-content: center;
 }
 
 #portfolio-details dl {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center the list items */
-    text-align: left; /* Keep text aligned to the left within each list item */
-    max-width: 800px; /* Limit the width for better readability */
+    display: block;
+    max-width: 800px;
     width: 100%;
+    margin: 0 auto;
+    text-align: left;
 }
 
 #portfolio-details dt {
