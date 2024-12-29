@@ -32,6 +32,9 @@ header {
     gap: 1rem;
     margin: 0;
     padding: 0;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
 }
 
 .nav-links li a {
@@ -97,6 +100,7 @@ footer p {
     .nav-links {
         flex-direction: column;
         gap: 0.5rem;
+        position: static;
     }
 
     .placeholder {
