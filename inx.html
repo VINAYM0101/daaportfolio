@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Themed City Plan</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1B03A3; /* Neon blue background */
+            color: #fff; /* Text color set to white for contrast */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between; /* Push footer to the bottom */
+            align-items: center; /* Center the content horizontally */
+        }
+
+        /* Main Content */
+        main {
+            text-align: center;
+            padding: 50px 20px;
+            flex-grow: 1; /* Allows the main content to take up available space */
+        }
+
+        h1.main-heading {
+            font-size: 2.5em;
+            color: #fff; /* White color for the heading */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for effect */
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Buttons */
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .btn {
+            background-color: #ff1493; /* Neon pink */
+            color: #fff;
+            font-size: 1.2em;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Button Hover Effects */
+        .btn:hover {
+            background-color: #ff69b4; /* Lighter pink on hover */
+            transform: translateY(-5px); /* Lift the button on hover */
+        }
+
+        .btn:active {
+            transform: translateY(2px); /* Push the button down slightly when clicked */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ff1493; /* Neon pink footer */
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Button Text Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .btn {
+            animation: slideIn 1.5s ease-out;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 600px) {
+            h1.main-heading {
+                font-size: 1.8em;
+            }
+            .btn {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1 class="main-heading">Welcome To Kaveri Vana, A Smart City Design Project</h1>
+
+        <div class="button-container">
+            <a href="index.html"><button class="btn">Portfolio</button></a>
+            <a href="business_cases.html"><button class="btn">Business Cases</button></a>
+            <a href="course_reflections.html"><button class="btn">Course Reflections</button></a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Designed by Vinay Madgi</p>
+        <p>© 2024 Vinay Madgi. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
