@@ -99,22 +99,25 @@ nav {
     padding: 1rem;
     z-index: 10;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex; /* To align items horizontally */
-    justify-content: flex-end; /* Move items to the right */
-    align-items: center; /* Vertically align items */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: 700; /* Bold */
+    color: white; /* White color */
+    text-transform: uppercase;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    justify-content: flex-end;
     gap: 2rem;
     margin: 0;
     padding: 0;
-    align-items: center; /* Ensure items in the list are vertically aligned */
-}
-
-nav ul li {
-    display: inline; /* Ensures the list items align horizontally */
 }
 
 nav ul li a {
