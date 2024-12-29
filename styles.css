@@ -31,13 +31,14 @@ header {
 }
 
 /* Navigation */
+/* Navigation Styles */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1rem;
     margin: 0;
     padding: 0;
-    position: absolute;/* Adjusted positioning */
+    position: absolute;
     top: 1rem;
     right: 2rem;
 }
@@ -48,17 +49,20 @@ header {
 
 .nav-links li a {
     text-decoration: none;
-    color: #000; /* Black color for text */
+    color: #000; /* Black text */
     font-weight: 400;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    transition: color 0.3s ease, background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-links li a:hover {
-    background-color: #8ecae6; /* Soft pastel blue */
+    background-color: #0077b6; /* Rich blue hover effect */
     color: #fff; /* White text for contrast */
 }
+
+/* background-color: #8ecae6; /* Soft pastel blue */
+/*  color: #fff; /* White text for contrast */ 
 
 /* Mobile Menu */
 .hamburger {
