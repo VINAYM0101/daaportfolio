@@ -3,64 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Design and Analysis of Algorithms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
+    <!-- Header Section -->
     <header class="header">
-        <h1 class="header-title">Hello, I'm Vinay 👋</h1>
-        <p class="header-subtitle">Driven by a passion for technology and a love for tackling challenges, Here's a glimpse of my work</p>
+        <h1 class="header-title">Design and Analysis of Algorithms</h1>
+        <p class="header-subtitle">Explore, Learn, and Visualize Algorithm Concepts</p>
+        <nav class="nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#topics">Topics</a></li>
+                <li><a href="#visualizations">Visualizations</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="projects-section">
-        <h2 class="section-title">🛠️ Projects</h2>
-        <ul class="project-list">
-            <li><strong>Project 1:</strong> Desgining a smart and sustainable city Kaverivana(ಕಾವೇರಿವನ).</li>
-        </ul>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Master the Core Concepts of Algorithm Design</h2>
+            <p>Understand paradigms like Divide and Conquer, Greedy, and Dynamic Programming through interactive visuals and examples.</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+        <div class="hero-animation">
+            <!-- Add a dynamic SVG or canvas-based animation here -->
+        </div>
     </section>
 
-    <section class="skills-section">
-        <h2 class="section-title">🚀 Skills</h2>
-        <ul class="skills-list">
-            <li>C++, Python</li>
-            <li>Data Structures and Algorithms</li>
-            <li>Web Development</li>
-        </ul>
+    <!-- Topics Section -->
+    <section id="topics" class="topics">
+        <h2 class="section-title">Algorithm Design Paradigms</h2>
+        <div class="topic-cards">
+            <div class="card">
+                <h3>Divide and Conquer</h3>
+                <p>Learn how to solve problems by breaking them into subproblems.</p>
+                <button class="details-button">Learn More</button>
+            </div>
+            <div class="card">
+                <h3>Greedy Algorithms</h3>
+                <p>Optimize solutions by choosing the best option at each step.</p>
+                <button class="details-button">Learn More</button>
+            </div>
+            <div class="card">
+                <h3>Dynamic Programming</h3>
+                <p>Solve problems efficiently using overlapping subproblems and recursion.</p>
+                <button class="details-button">Learn More</button>
+            </div>
+            <div class="card">
+                <h3>Graph Algorithms</h3>
+                <p>Explore graph traversal, shortest paths, and network flows.</p>
+                <button class="details-button">Learn More</button>
+            </div>
+        </div>
     </section>
 
-    <section class="findme-section">
-        <h2 class="section-title">🌐 Find Me Online</h2>
-        <ul class="findme-list">
-            <li><a href="https://github.com/your-github-username" target="https://github.com/VINAYM0101/daaportfolio.github.io">GitHub</a></li>
-            <li><a href="https://linkedin.com/in/your-linkedin-profile" target="https://www.linkedin.com/in/vinay-madgi-5653071b4/">LinkedIn</a></li>
-        </ul>
+    <!-- Visualizations Section -->
+    <section id="visualizations" class="visualizations">
+        <h2 class="section-title">Algorithm Visualizations</h2>
+        <div class="visualization-container">
+            <canvas id="algorithmCanvas"></canvas>
+        </div>
+        <p>Interact with live sorting algorithms, graph traversals, and more!</p>
     </section>
 
-    <section class="portfolio-details-section">
-        <h2 class="section-title">Smart City Design</h2>
-        <dl class="details-list">
-            <dt>Course Name</dt>
-            <dd>Design and Analysis of Algorithms</dd>
-
-            <dt>Course Code</dt>
-            <dd>24ECSC205</dd>
-
-            <dt>Name</dt>
-            <dd>VINAY M MADGI</dd>
-
-            <dt>SRN</dt>
-            <dd>01FE23BCS306</dd>
-
-            <dt>Course Instructor</dt>
-            <dd>ARUNDHATI A</dd>
-
-            <dt>University</dt>
-            <dd>K.L.E TECHNOLOGICAL UNIVERSITY</dd>
-
-            <dt>Portfolio Topic/Domain</dt>
-            <dd>Smart city design</dd>
-        </dl>
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz">
+        <h2 class="section-title">Test Your Knowledge</h2>
+        <p>Take a quiz to evaluate your understanding of algorithm concepts.</p>
+        <button class="quiz-button">Start Quiz</button>
     </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Algorithms</h2>
+        <p>Algorithms form the backbone of computer science. From sorting data to finding the shortest paths, they are integral to solving computational problems efficiently.</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 Design and Analysis of Algorithms. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
