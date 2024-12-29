@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Governance Table</title>
+    <!-- Include FontAwesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        /* Set up a flexbox layout for the heading and table side by side */
+        .container {
+            display: flex;
+            align-items: flex-start;
+            margin: 30px;
+        }
+
+        /* Styling for the heading */
+        h2 {
+            font-size: 36px;
+            color: black;
+            font-weight: bold;
+            margin-right: 30px;
+        }
+
+        #smartGovernanceTable {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px; /* Curvy corners for the table */
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #smartGovernanceTable th, #smartGovernanceTable td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #smartGovernanceTable th {
+            background-color: #0066cc;
+            color: white;
+            font-size: 18px;
+        }
+
+        #smartGovernanceTable tr:hover {
+            background-color: #f1f9ff;
+            transition: background-color 0.3s ease;
+        }
+
+        .sub-group i {
+            font-size: 35px;
+            margin-right: 15px;
+            color: #0066cc;
+        }
+
+        .code-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .code-button:hover {
+            background-color: #004d99;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Add animation for table rows */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #smartGovernanceTable tr {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Stylish blue background for the page */
+        .existing-content {
+            background-color: #e6f2ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: "Courier New", monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <!-- Existing webpage content goes here -->
+    <div class="existing-content">
+        <h1>Existing Webpage</h1>
+        <!-- Existing table or other content -->
+    </div>
+
+    <!-- Container with flexbox layout to position heading beside the table -->
+    <div class="container">
+        <!-- Smart Governance Approaches Heading moved beside the table -->
+        <h2>Smart Governance Approaches</h2>
+
+        <!-- Smart Governance Table -->
+        <table id="smartGovernanceTable">
+            <thead>
+                <tr>
+                    <th>Sub-Group</th>
+                    <th>Algorithm</th>
+                    <th>Description</th>
+                    <th>SDG Goals</th>
+                    <th>Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="sub-group">
+                        <i class="fas fa-city"></i> Smart City
+                    </td>
+                    <td>QuickSort</td>
+                    <td>Integrating Internet of Things (IoT) with Artificial Intelligence (AI) for efficient urban management.</td>
+                    <td>SDG 11 - Sustainable Cities</td>
+                    <td><button class="code-button" onclick="showCode('smartCityCode')">View Code</button></td>
+                </tr>
+                <tr>
+                    <td class="sub-group">
+                        <i class="fas fa-layer-group"></i> Blockchain Governance
+                    </td>
+                    <td>DFS</td>
+                    <td>Using Blockchain technology for transparent and secure data management in governance.</td>
+                    <td>SDG 16 - Peace, Justice, and Strong Institutions</td>
+                    <td><button class="code-button" onclick="showCode('blockchainCode')">View Code</button></td>
+                </tr>
+                <tr>
+                    <td class="sub-group">
+                        <i class="fas fa-chart-line"></i> Data-Driven Decision Making
+                    </td>
+                    <td>Dijkstra's Algorithm</td>
+                    <td>Leveraging big data and machine learning algorithms for informed policy making and governance.</td>
+                    <td>SDG 9 - Industry, Innovation, and Infrastructure</td>
+                    <td><button class="code-button" onclick="showCode('dataDrivenCode')">View Code</button></td>
+                </tr>
+                <tr>
+                    <td class="sub-group">
+                        <i class="fas fa-cloud"></i> E-Governance
+                    </td>
+                    <td>MergeSort</td>
+                    <td>Enabling government services and transparency through cloud computing technologies.</td>
+                    <td>SDG 16 - Peace, Justice, and Strong Institutions</td>
+                    <td><button class="code-button" onclick="showCode('egovCode')">View Code</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for displaying code -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <pre id="codeContent"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Sample C++ code for each sub-group
+        const codeSnippets = {
+            smartCityCode: `
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void quickSort(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        int pivot = arr[high];
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr[i], arr[j]);
+            }
+        }
+        swap(arr[i + 1], arr[high]);
+        int pi = i + 1;
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    vector<int> arr = {10, 7, 8, 9, 1, 5};
+    int n = arr.size();
+    quickSort(arr, 0, n - 1);
+    for (int i : arr) {
+        cout << i << " ";
+    }
+    return 0;
+}
+            `,
+            blockchainCode: `
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <unordered_set>
+using namespace std;
+
+void dfs(int node, vector<vector<int>>& graph, unordered_set<int>& visited) {
+    visited.insert(node);
+    cout << node << " ";
+    for (int neighbor : graph[node]) {
+        if (visited.find(neighbor) == visited.end()) {
+            dfs(neighbor, graph, visited);
+        }
+    }
+}
+
+int main() {
+    vector<vector<int>> graph = {
+        {1, 2},   // Node 0
+        {0, 2},   // Node 1
+        {0, 1, 3}, // Node 2
+        {2}        // Node 3
+    };
+    unordered_set<int> visited;
+    dfs(0, graph, visited);
+    return 0;
+}
+            `,
+            dataDrivenCode: `
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+vector<int> dijkstra(int n, vector<vector<int>>& graph, int start) {
+    vector<int> dist(n, INT_MAX);
+    dist[start] = 0;
+    for (int i = 0; i < n - 1; i++) {
+        for (int u = 0; u < n; u++) {
+            for (int v = 0; v < n; v++) {
+                if (dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v]) {
+                    dist[v] = dist[u] + graph[u][v];
+                }
+            }
+        }
+    }
+    return dist;
+}
+
+int main() {
+    int n = 5;
+    vector<vector<int>> graph = {
+        {0, 10, 0, 30, 0},
+        {10, 0, 50, 0, 0},
+        {0, 50, 0, 10, 0},
+        {30, 0, 10, 0, 10},
+        {0, 0, 0, 10, 0}
+    };
+    vector<int> dist = dijkstra(n, graph, 0);
+    for (int i : dist) {
+        cout << i << " ";
+    }
+    return 0;
+}
+            `,
+            egovCode: `
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void merge(vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    vector<int> L(n1), R(n2);
+    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+    for (int i = 0; i < n2; i++) R[i] = arr[mid + 1 + i];
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) arr[k++] = L[i++];
+        else arr[k++] = R[j++];
+    }
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+}
+
+int main() {
+    vector<int> arr = {12, 11, 13, 5, 6, 7};
+    mergeSort(arr, 0, arr.size() - 1);
+    for (int i : arr) {
+        cout << i << " ";
+    }
+    return 0;
+}
+            `
+        };
+
+        // Modal functionality to show code
+        function showCode(codeId) {
+            document.getElementById('codeContent').textContent = codeSnippets[codeId];
+            document.getElementById('codeModal').style.display = "block";
+
+            // Center modal when shown
+            centerModal();
+        }
+
+        // Close modal when user clicks on <span> (x)
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('codeModal').style.display = "none";
+        }
+
+        // Close modal when user clicks anywhere outside the modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('codeModal')) {
+                document.getElementById('codeModal').style.display = "none";
+            }
+        }
+
+        // Function to center the modal
+        function centerModal() {
+            var modalContent = document.querySelector('.modal-content');
+            var modal = document.getElementById('codeModal');
+            var windowHeight = window.innerHeight;
+            var windowWidth = window.innerWidth;
+            var modalHeight = modalContent.offsetHeight;
+            var modalWidth = modalContent.offsetWidth;
+
+            // Position the modal at the center
+            modalContent.style.top = (windowHeight - modalHeight) / 2 + 'px';
+            modalContent.style.left = (windowWidth - modalWidth) / 2 + 'px';
+        }
+    </script>
+</body>
+</html>
