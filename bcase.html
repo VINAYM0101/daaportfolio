@@ -27,6 +27,7 @@
             overflow: hidden;
             position: relative; /* For positioning of the heading */
             transition: margin-top 0.3s ease;
+            padding-top: 50px; /* Initial padding for the heading to be behind */
         }
 
         table {
@@ -83,7 +84,7 @@
 
         h1 {
             position: absolute;
-            top: -50px; /* Initially behind the table */
+            top: -50px; /* Initially hidden behind the table */
             left: 50%;
             transform: translateX(-50%);
             color: black; /* Renewable Energy heading in bold black */
@@ -91,6 +92,7 @@
             font-weight: bold;
             margin: 0;
             opacity: 0; /* Hidden initially */
+            z-index: 10; /* Ensure it's above other content */
             transition: opacity 0.3s ease, top 0.3s ease, background-color 0.3s ease;
         }
 
@@ -103,6 +105,7 @@
             margin-top: 40px; /* Move the table down */
             background-color: #0056b3; /* Royal blue background when hovered */
             border-radius: 10px;
+            padding-top: 20px; /* Allow space for heading when it pops up */
         }
 
         .table-container:hover table {
