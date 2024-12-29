@@ -78,6 +78,8 @@ section {
     animation: slideUp 1s ease-in-out;
     background-color: #e3f2fd;
     border-radius: 8px;
+    opacity: 0;
+    animation: fadeInUp 2s forwards;
 }
 
 /* Hover Effects for Buttons */
@@ -103,6 +105,7 @@ section {
     background-color: #24292f;
     color: white;
     transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .linkedin-btn {
@@ -115,6 +118,7 @@ section {
     background-color: #005f80;
     color: white;
     transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .social-buttons {
@@ -245,6 +249,62 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Text Reveal Animation (for the intro text) */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header h1 {
+    animation: textReveal 2s ease-out;
+}
+
+header p {
+    animation: textReveal 3s ease-out;
+    animation-delay: 1s; /* Delayed start */
+}
+
+/* Parallax Background for Sections */
+section#projects {
+    background: linear-gradient(to bottom, rgba(0, 119, 182, 0.8), rgba(0, 119, 182, 0.5)), url('your-image-path.jpg');
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    background-size: cover;
+}
+
+section#skills {
+    background: linear-gradient(to bottom, rgba(30, 144, 255, 0.8), rgba(30, 144, 255, 0.5)), url('your-image-path.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Keyframe animation for Buttons */
+@keyframes buttonEffect {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.github-btn:hover, .linkedin-btn:hover {
+    animation: buttonEffect 0.5s ease-in-out;
 }
 
 /* Responsive Design */
