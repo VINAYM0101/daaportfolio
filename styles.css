@@ -29,22 +29,20 @@ header {
     text-transform: uppercase;
 }
 
+/* Navigation */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1rem;
     margin: 0;
     padding: 0;
-    position: absolute;
-    right: 2rem;
-    top: 1rem;
 }
 
 .nav-links li a {
     text-decoration: none;
     color: #fff;
     font-weight: 400;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease;
     padding: 0.5rem 1rem;
     border-radius: 5px;
 }
@@ -52,6 +50,43 @@ header {
 .nav-links li a:hover {
     color: #333;
     background-color: #fff;
+}
+
+/* Mobile Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        background: #333;
+        padding: 1rem;
+        border-radius: 5px;
+        position: absolute;
+        top: 70px;
+        right: 2rem;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
 }
 
 /* Placeholder Section */
@@ -69,11 +104,13 @@ main {
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 1rem;
+    animation: slideIn 1s ease-in-out;
 }
 
 .placeholder p {
     font-size: 1.2rem;
     color: #666;
+    animation: slideIn 1.5s ease-in-out;
 }
 
 /* Footer Styles */
@@ -105,15 +142,13 @@ footer p {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-        position: static;
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
     }
-
-    .placeholder {
-        padding: 3rem 1rem;
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
