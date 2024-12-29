@@ -121,8 +121,26 @@
         <div class="question">
             <h2>3. Takeaway from Different Design Principles</h2>
             <ul>
-                <li><strong>Dynamic Programming:</strong> Avoid redundant calculations by storing intermediate results (e.g., Knapsack problem).</li>
-                <li><strong>Divide-and-Conquer:</strong> Break problems into smaller parts (e.g., Merge sort, Quick sort).</li>
+                <li><strong>Decomposition:</strong> Break complex problems into manageable sub-problems to simplify solutions.</li>
+                <li><strong>Pattern Recognition:</strong> Identify recurring structures to apply reusable solutions.</li>
+                <li><strong>Abstraction:</strong> Focus on the essential details by ignoring irrelevant complexities.</li>
+                <li><strong>Brave and Cautious Travel:</strong> Balance exploring risky options with safe alternatives for optimization.</li>
+                <li><strong>Pruning:</strong> Eliminate unnecessary possibilities early (e.g., alpha-beta pruning in search trees).</li>
+                <li><strong>Lazy Propagation / Evaluation:</strong> Delay computations until absolutely necessary to save resources.</li>
+                <li><strong>Sliding Window:</strong> Efficiently process subsets of data with a dynamic range (e.g., in substring problems).</li>
+                <li><strong>Level Order Traversal:</strong> Traverse hierarchical structures level by level for breadth-first exploration.</li>
+                <li><strong>Hierarchical Data:</strong> Represent data in tree-like structures for better organization and access.</li>
+                <li><strong>Edge Relaxation:</strong> Gradually reduce edge weights to find shortest paths (e.g., in Dijkstra’s algorithm).</li>
+                <li><strong>Balancing and Rotations:</strong> Maintain balanced structures for efficient operations (e.g., AVL trees).</li>
+                <li><strong>Kleene Closure:</strong> Handle repetitive patterns or sequences effectively in automata and regex.</li>
+                <li><strong>Pre-Computing:</strong> Compute results in advance to speed up query responses.</li>
+                <li><strong>Parental Dominance:</strong> Ensure parent nodes dominate children for ordered structures (e.g., heaps).</li>
+                <li><strong>Prefix and Suffix:</strong> Utilize pre-calculated prefix or suffix information to solve range-based problems.</li>
+                <li><strong>Partitioning:</strong> Divide data into subsets to simplify and optimize computations (e.g., quicksort partition).</li>
+                <li><strong>Bit Manipulations:</strong> Exploit binary operations for compact and efficient data processing.</li>
+                <li><strong>Memoization:</strong> Store already computed results to avoid redundant calculations (e.g., Fibonacci series).</li>
+                <li><strong>Invariants:</strong> Maintain consistent properties throughout an algorithm’s execution for correctness.</li>
+                <li><strong>Shortest Path Trees:</strong> Build trees from source nodes to minimize path costs (e.g., Prim’s, Dijkstra’s).</li>
             </ul>
         </div>
 
@@ -172,11 +190,21 @@
         <div class="question">
             <h2>7. Sorting and Searching Fundamentals</h2>
             <ul>
-                <li><strong>Sorting Algorithms:</strong> Bubble sort, Merge sort, Quick sort.</li>
+                <li><strong>Sorting Algorithms:</strong></li>
+                <ul>
+                    <li><b>Bubble Sort:</b> Repeatedly compares adjacent elements and swaps them if they are in the wrong order.<i>Use cases:</i> Small datasets, Data that’s almost sorted.</li>
+                    <li><b>Selection Sort:</b> Finds the smallest (or largest) element in the list and places it at the beginning (or end).<i>Use cases:</i> Memory-limited scenarios, Small datasets.</li>
+                    <li><b>Insertion Sort:</b> Builds the sorted list one element at a time by inserting each new element into its correct position.<i>Use cases:</i> Dynamic sorting(e.g., maintaining a sorted list), Nearly sorted data, Small datasets.</li>
+                    <li><b>Merge Sort:</b> Divides the list into smaller sublists until each has one element, then merges them back together in sorted order.<i>Use cases:</i> Large datasets, External sorting(e.g., sorting files on disk), Stable sorting.</li>
+                    <li><b>Quick Sort:</b> Picks a "pivot" element and divides the list into two parts: smaller than the pivot and larger than the pivot.<i>Use cases:</i> General-purpose sorting, In-memory sorting, Performance-critical applications.</li>
+                    <li><b>Heap Sort:</b> Uses a heap (a special tree structure) to repeatedly extract the largest (or smallest) element and rebuild the heap.<i>Use cases:</i> Memory constraints(in-place sorting), Guaranteed time complexity, Priority queues(e.g., job scheduling).</li>
+                    
                 <li><strong>Searching Algorithms:</strong>
                     <ul>
-                        <li>Linear Search: Works on unsorted data.</li>
-                        <li>Binary Search: Requires sorted data.</li>
+                        <li><b>Linear Search:</b> Checks each element in the list one by one until it finds the target value or reaches the end.<i>Use cases:</i>When the list is unsorted, When the list is small.</li>
+                        <li><b>Binary Search:</b> Works only on sorted lists.epeatedly divides the list in half, checking if the target value is in the left or right half.<i>Use cases:</i>When the list is sorted, You need a faster search on large datasets.</li>
+                        <li><b>Hash-Based Search:</b> Uses a hash table for near-instant lookups.<i>Use cases:</i> Applied in password validation and database indexing.</li>
+                        <li><b>DFS/BFS:</b> Depth-First Search and Breadth-First Search are graph-based search techniques.<i>Use cases:</i> Used in navigation systems and network troubleshooting.</li>
                     </ul>
                 </li>
             </ul>
@@ -192,6 +220,8 @@
                         <li>Bellman-Ford Algorithm: Handles graphs with negative weights.</li>
                     </ul>
                 </li>
+                <li><strong>BFS:</strong> Web Crawling, Broadcasting in Networks, Solving Puzzles or Games, Level-wise Exploration.</li>
+                <li><strong>DFS:</strong> Network Analysis, Finding Connected Components, Pathfinding and Maze Solving, Topological Sorting, Cycle Detection.</li>
             </ul>
         </div>
     </div>
