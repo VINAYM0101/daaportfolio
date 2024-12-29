@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Issues Table</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,6 +72,10 @@
             border-radius: 5px;
             padding: 10px;
         }
+
+        .issue-icon {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -86,28 +92,28 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Intermittency</td>
+                    <td><i class="fas fa-bolt issue-icon"></i>Intermittency</td>
                     <td>Forecasting Algorithms</td>
                     <td>Predict renewable energy availability using weather data.</td>
                     <td>SDG 7: Affordable and Clean Energy</td>
                     <td class="code">weather_forecast()</td>
                 </tr>
                 <tr>
-                    <td>High Costs</td>
+                    <td><i class="fas fa-dollar-sign issue-icon"></i>High Costs</td>
                     <td>Cost Optimization</td>
                     <td>Minimize installation costs through optimal resource allocation.</td>
                     <td>SDG 9: Industry, Innovation, and Infrastructure</td>
                     <td class="code">optimize_costs()</td>
                 </tr>
                 <tr>
-                    <td>Land Use</td>
+                    <td><i class="fas fa-map-marked-alt issue-icon"></i>Land Use</td>
                     <td>GIS Mapping</td>
                     <td>Identify optimal land areas for renewable installations.</td>
                     <td>SDG 15: Life on Land</td>
                     <td class="code">land_analysis()</td>
                 </tr>
                 <tr>
-                    <td>Recycling</td>
+                    <td><i class="fas fa-recycle issue-icon"></i>Recycling</td>
                     <td>Lifecycle Analysis</td>
                     <td>Track material use for improved recycling methods.</td>
                     <td>SDG 12: Responsible Consumption and Production</td>
