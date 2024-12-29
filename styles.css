@@ -56,8 +56,8 @@ header {
 }
 
 .nav-links li a:hover {
-    background-color: #ddd; /* Light gray hover effect */
-    color: #000;
+    background-color: #8ecae6; /* Soft pastel blue */
+    color: #fff; /* White text for contrast */
 }
 
 /* Mobile Menu */
