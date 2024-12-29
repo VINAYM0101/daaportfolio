@@ -201,7 +201,7 @@ section {
     padding: 2rem;
     border-radius: 8px;
     margin: 2rem 0;
-    opacity: 0;
+    opacity: 1; /* Ensure it's visible */
     animation: fadeInUp 2s ease-out forwards;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
