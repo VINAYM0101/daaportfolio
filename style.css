@@ -6,6 +6,7 @@ body {
     color: #333;
     padding: 0;
     overflow-x: hidden;
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 h1, h2, h3, p {
@@ -14,7 +15,7 @@ h1, h2, h3, p {
 
 /* Header Styling */
 header {
-    background: royalblue; /* Royal blue background */
+    background: royalblue; /* Change to royal blue */
     color: white;
     text-align: center;
     padding: 5rem 1rem;
@@ -25,11 +26,14 @@ header {
 header h1 {
     font-size: 3rem;
     font-weight: 700;
+    animation: slideIn 1.5s ease-out;
 }
 
 header p {
     font-size: 1.5rem;
     margin-top: 1rem;
+    opacity: 0;
+    animation: fadeInText 2s 1.5s forwards;
 }
 
 /* Navigation Styling */
@@ -69,12 +73,63 @@ nav ul li a:hover {
 
 /* Section Styling */
 section {
-    margin: 2rem auto;
-    padding: 2rem;
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+    animation: slideUp 1s ease-in-out;
+    background-color: #e3f2fd;
     border-radius: 8px;
-    background-color: #e3f2fd; /* Light blue background */
-    max-width: 900px;
+}
+
+/* Hover Effects for Buttons */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    font-size: 1.2rem;
     text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.github-btn {
+    background-color: #333;
+    color: white;
+    border: 2px solid #333;
+}
+
+.github-btn:hover {
+    background-color: #24292f;
+    color: white;
+    transform: translateY(-5px); /* Lift effect */
+}
+
+.linkedin-btn {
+    background-color: #0077b6;
+    color: white;
+    border: 2px solid #0077b6;
+}
+
+.linkedin-btn:hover {
+    background-color: #005f80;
+    color: white;
+    transform: translateY(-5px); /* Lift effect */
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Portfolio Details Section Centering */
+#portfolio-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeInUp 2s ease-out;
 }
 
 /* Title Styling */
@@ -82,7 +137,10 @@ h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     color: #0077b6;
+    text-transform: uppercase;
+    text-align: center;
     font-weight: bold;
+    animation: fadeInUp 1.5s ease-in-out;
 }
 
 /* Project and Skill List Styling */
@@ -106,69 +164,13 @@ ul li a:hover {
     text-decoration: underline;
 }
 
-/* Button Styling */
-.btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    margin: 1rem;
-    font-size: 1.2rem;
+/* Definition List Styling */
+dl {
+    margin-top: 2rem;
+    background: #d0e0f5;
+    padding: 2rem;
+    border-radius: 8px;
     text-align: center;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-/* GitHub Button */
-.github-btn {
-    background-color: #333;
-    color: white;
-    border: 2px solid #333;
-}
-
-.github-btn:hover {
-    background-color: #24292f;
-    color: white;
-    transform: translateY(-5px); /* Lift effect */
-}
-
-/* LinkedIn Button */
-.linkedin-btn {
-    background-color: #0077b6;
-    color: white;
-    border: 2px solid #0077b6;
-}
-
-.linkedin-btn:hover {
-    background-color: #005f80;
-    color: white;
-    transform: translateY(-5px); /* Lift effect */
-}
-
-/* Button Container */
-.social-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-/* Portfolio Details Section */
-#portfolio-details {
-    background-color: #e3f2fd; /* Light blue background */
-    padding: 2rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-#portfolio-details dl {
-    margin-top: 2rem;
-    background: #e3f2fd; /* Light blue background */
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 900px;
-    margin: auto;
 }
 
 dt {
@@ -211,6 +213,26 @@ footer {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
