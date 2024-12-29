@@ -25,12 +25,14 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            position: relative; /* Allow positioning of the heading */
+            position: relative; /* For positioning of the heading */
+            transition: margin-top 0.3s ease;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            transition: margin-top 0.3s ease;
         }
 
         thead {
@@ -89,12 +91,22 @@
             font-weight: bold;
             margin: 0;
             opacity: 0; /* Hidden initially */
-            transition: opacity 0.3s ease, top 0.3s ease;
+            transition: opacity 0.3s ease, top 0.3s ease, background-color 0.3s ease;
         }
 
         .table-container:hover h1 {
             opacity: 1;
-            top: 20px; /* Pop out to the top */
+            top: -60px; /* Move the heading above the table */
+        }
+
+        .table-container:hover {
+            margin-top: 40px; /* Move the table down */
+            background-color: #0056b3; /* Royal blue background when hovered */
+            border-radius: 10px;
+        }
+
+        .table-container:hover table {
+            margin-top: 30px; /* Adjust table position when heading pops out */
         }
 
         /* Add a subtle shadow to make the heading look like it pops out */
@@ -153,13 +165,17 @@
         // Show the heading when mouse enters the table
         function showHeading() {
             document.querySelector('h1').style.opacity = '1';
-            document.querySelector('h1').style.top = '20px'; /* Pop out */
+            document.querySelector('h1').style.top = '-60px'; /* Move heading above */
+            document.querySelector('.table-container').style.marginTop = '40px'; /* Move table down */
+            document.querySelector('.table-container').style.backgroundColor = '#0056b3'; /* Royal blue */
         }
 
         // Hide the heading when mouse leaves the table
         function hideHeading() {
             document.querySelector('h1').style.opacity = '0';
             document.querySelector('h1').style.top = '-50px'; /* Hide behind */
+            document.querySelector('.table-container').style.marginTop = '0'; /* Reset table position */
+            document.querySelector('.table-container').style.backgroundColor = 'transparent'; /* Reset background */
         }
     </script>
 </body>
