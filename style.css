@@ -14,14 +14,12 @@ h1, h2, h3, p {
 
 /* Header Styling */
 header {
-    background: royalblue; /* Royal blue */
+    background: royalblue; /* Change to royal blue */
     color: white;
     text-align: center;
     padding: 5rem 1rem;
     position: relative;
     animation: fadeIn 2s ease-in-out;
-    border-radius: 10px;
-    margin: 2rem;
 }
 
 header h1 {
@@ -73,32 +71,14 @@ nav ul li a:hover {
 section {
     padding: 4rem 2rem;
     margin: 2rem 0;
-    border-radius: 8px;
     animation: slideUp 1s ease-in-out;
-}
-
-/* Specific Section Backgrounds */
-#projects {
-    background: #0096c7; /* Light blue */
-}
-
-#skills {
-    background: #0077b6; /* Medium blue */
-}
-
-#contact {
-    background: #005f73; /* Dark blue */
-}
-
-#portfolio-details {
-    background: #00b4d8; /* Vibrant turquoise blue */
 }
 
 /* Title Styling */
 h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: white; /* White text for contrast */
+    color: #0077b6;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -144,6 +124,37 @@ dd {
     font-size: 1.1rem;
 }
 
+/* Portfolio Details Section */
+#portfolio-details {
+    background: #00b4d8; /* Vibrant turquoise blue */
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    text-align: center; /* Centers text inside */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all items horizontally */
+    justify-content: center; /* Centers content vertically */
+}
+
+#portfolio-details dl {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the list items */
+    text-align: left; /* Keep text aligned to the left within each list item */
+    max-width: 800px; /* Limit the width for better readability */
+    width: 100%;
+}
+
+#portfolio-details dt {
+    font-weight: bold;
+    color: #0077b6;
+}
+
+#portfolio-details dd {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
 /* Footer Styling */
 footer {
     background-color: #333;
@@ -152,7 +163,6 @@ footer {
     padding: 2rem 1rem;
     position: relative;
     margin-top: 2rem;
-    border-radius: 8px;
 }
 
 /* Animations */
