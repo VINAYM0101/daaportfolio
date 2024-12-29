@@ -13,27 +13,91 @@ h1, h2, h3, p {
     margin: 0;
 }
 
-/* Header Styling */
+/* Header Styling with Animated Background */
 header {
-    background: royalblue; /* Change to royal blue */
+    background: linear-gradient(45deg, #6a11cb, #2575fc); /* Vibrant Gradient */
     color: white;
     text-align: center;
     padding: 5rem 1rem;
     position: relative;
-    animation: fadeIn 2s ease-in-out;
+    animation: backgroundAnimation 3s ease-in-out infinite alternate;
+    overflow: hidden;
 }
 
-header h1 {
+/* Background Animation */
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+    }
+    100% {
+        background: linear-gradient(45deg, #3a7bd5, #3a6073);
+    }
+}
+
+/* Header Content - Text and Image Animation */
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 2rem;
+    opacity: 0;
+    animation: fadeInImage 2s 0.5s forwards;
+}
+
+/* Image Fade In Animation */
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Text Animation */
+h1 {
     font-size: 3rem;
     font-weight: 700;
-    animation: slideIn 1.5s ease-out;
+    opacity: 0;
+    animation: slideInText 2s ease-out forwards;
+}
+
+/* Text Slide-in Animation */
+@keyframes slideInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 header p {
     font-size: 1.5rem;
     margin-top: 1rem;
     opacity: 0;
-    animation: fadeInText 2s 1.5s forwards;
+    animation: fadeInText 2s 2s forwards;
+}
+
+/* Text Fade In */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Navigation Styling */
