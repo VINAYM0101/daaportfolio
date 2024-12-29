@@ -109,20 +109,21 @@
             position: fixed;
             z-index: 1;
             left: 0;
-            top: 0;
+            top: 20%; /* Move the modal down so it doesn't cover the top part of the screen */
             width: 100%;
-            height: 100%;
+            height: 80%; /* Make the modal take up more of the screen */
             background-color: rgba(0, 0, 0, 0.4);
             padding-top: 60px;
+            overflow-y: auto; /* Allow scrolling if content exceeds height */
         }
 
         .modal-content {
             background-color: white;
-            margin: 5% auto;
+            margin: auto;
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
-            max-width: 600px;
+            max-width: 900px; /* Increase max width for better readability of code */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
@@ -148,7 +149,10 @@
             border: 1px solid #ddd;
             white-space: pre-wrap;
             word-wrap: break-word;
+            height: 400px; /* Set a fixed height */
+            overflow-y: auto; /* Add scroll bar if the code exceeds the height */
         }
+
     </style>
 </head>
 <body>
