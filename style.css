@@ -191,56 +191,48 @@ section {
     gap: 1rem;
 }
 
-/* Portfolio Details Section Centering */
+/* Portfolio Details Section Centering with Animation */
 #portfolio-details {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    animation: fadeInUp 2s ease-out;
+    background-color: #d0e0f5;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out forwards;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Title Styling */
-h2 {
+#portfolio-details h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     color: #0077b6;
-    text-transform: uppercase;
     text-align: center;
     font-weight: bold;
     animation: fadeInUp 1.5s ease-in-out;
 }
 
-/* Project and Skill List Styling */
-ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
+/* Portfolio Details Animation for DL */
+dl {
+    margin-top: 2rem;
+    animation: fadeInList 2s ease-out;
+    text-align: left;
 }
 
-ul li {
-    margin: 1rem 0;
-    font-size: 1.2rem;
-}
-
-ul li a {
-    color: #ff6f61;
-    text-decoration: none;
-}
-
-ul li a:hover {
-    text-decoration: underline;
+/* Fade-in Effect for Definition List */
+@keyframes fadeInList {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Definition List Styling */
-dl {
-    margin-top: 2rem;
-    background: #d0e0f5;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-}
-
 dt {
     font-weight: bold;
     color: #0077b6;
