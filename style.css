@@ -106,26 +106,14 @@ ul li a:hover {
     text-decoration: underline;
 }
 
-/* Find Me Online Section Styling */
-#contact ul li {
-    margin-bottom: 1rem;
-}
-
-#contact ul li a {
-    color: #0077b6;
-    font-weight: bold;
-}
-
-#contact ul li a:hover {
-    color: #ff6f61;
-}
-
 /* Portfolio Details Section */
 #portfolio-details {
     background-color: #e3f2fd; /* Light blue background */
     padding: 2rem;
     border-radius: 8px;
     margin-top: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 #portfolio-details dl {
