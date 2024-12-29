@@ -1,0 +1,185 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(135deg, #ff6f61, #d0e0f5); /* Vibrant gradient */
+    color: white;
+    text-align: center;
+    padding: 5rem 1rem;
+    position: relative;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Navigation Styling */
+nav {
+    position: sticky;
+    top: 0;
+    background: #0077b6;
+    padding: 1rem;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #ff6f61;
+    color: #fff;
+    transform: translateY(-5px); /* Button lift effect */
+}
+
+/* Section Styling */
+section {
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+    animation: slideUp 1s ease-in-out;
+}
+
+/* Title Styling */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #0077b6;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+/* Project and Skill List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+ul li {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+ul li a {
+    color: #ff6f61;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Definition List Styling */
+dl {
+    margin-top: 2rem;
+    background: #d0e0f5;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+dt {
+    font-weight: bold;
+    color: #0077b6;
+}
+
+dd {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    position: relative;
+    margin-top: 2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section {
+        padding: 3rem 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
