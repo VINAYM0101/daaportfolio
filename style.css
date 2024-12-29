@@ -14,7 +14,7 @@ h1, h2, h3, p {
 
 /* Header Styling */
 header {
-    background: royalblue; /* Change to royal blue */
+    background: royalblue; /* Royal blue background */
     color: white;
     text-align: center;
     padding: 5rem 1rem;
@@ -69,9 +69,12 @@ nav ul li a:hover {
 
 /* Section Styling */
 section {
-    padding: 4rem 2rem;
-    margin: 2rem 0;
-    animation: slideUp 1s ease-in-out;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #e3f2fd; /* Light blue background */
+    max-width: 900px;
+    text-align: center;
 }
 
 /* Title Styling */
@@ -79,10 +82,7 @@ h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     color: #0077b6;
-    text-transform: uppercase;
-    text-align: center;
     font-weight: bold;
-    animation: fadeInUp 1.5s ease-in-out;
 }
 
 /* Project and Skill List Styling */
@@ -106,12 +106,35 @@ ul li a:hover {
     text-decoration: underline;
 }
 
-/* Definition List Styling */
-dl {
-    margin-top: 2rem;
-    background: #d0e0f5;
+/* Find Me Online Section Styling */
+#contact ul li {
+    margin-bottom: 1rem;
+}
+
+#contact ul li a {
+    color: #0077b6;
+    font-weight: bold;
+}
+
+#contact ul li a:hover {
+    color: #ff6f61;
+}
+
+/* Portfolio Details Section */
+#portfolio-details {
+    background-color: #e3f2fd; /* Light blue background */
     padding: 2rem;
     border-radius: 8px;
+    margin-top: 2rem;
+}
+
+#portfolio-details dl {
+    margin-top: 2rem;
+    background: #e3f2fd; /* Light blue background */
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: auto;
 }
 
 dt {
@@ -120,44 +143,6 @@ dt {
 }
 
 dd {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-/* Portfolio Details Section */
-#portfolio-details {
-    background-color: #e3f2fd; /* Light blue background */
-    padding: 3rem;
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 2rem auto; /* Centers the section horizontally */
-    text-align: center; /* Centers the text inside */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#portfolio-details h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #0077b6;
-    font-weight: bold;
-}
-
-#portfolio-details dl {
-    width: 100%;
-    padding: 1.5rem;
-    background: #d0e0f5; /* Lighter blue for content */
-    border-radius: 8px;
-}
-
-#portfolio-details dt {
-    font-weight: bold;
-    color: #0077b6;
-}
-
-#portfolio-details dd {
     margin-bottom: 1rem;
     font-size: 1.1rem;
 }
