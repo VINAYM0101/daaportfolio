@@ -19,6 +19,18 @@
             align-items: center; /* Center the content horizontally */
             overflow: hidden; /* Prevent scrollbars from appearing due to animation */
             position: relative; /* For absolute positioning of elements */
+            animation: fadeInPage 1.5s ease-in-out; /* Page opening animation */
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Snowflake Container */
@@ -128,7 +140,18 @@
             color: #fff; /* White color for the heading */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for effect */
             margin-bottom: 20px;
-            animation: fadeIn 2s ease-in-out;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Buttons */
@@ -161,7 +184,7 @@
             display: flex; /* Use flexbox for side-by-side layout */
             justify-content: center; /* Center both GIFs horizontally */
             align-items: center; /* Align GIFs vertically (if needed) */
-            margin: 20px 0; /* Space around the GIF container */
+            margin: 50px 0; /* Increased space around the GIF container */
             gap: 20px; /* Add spacing between GIFs */
         }
 
@@ -173,7 +196,7 @@
         }
 
         footer {
-            background: linear-gradient(to bottom, #001F4D, #004080); /* gradint blue footer */
+            background: linear-gradient(to bottom, #001F4D, #004080); /* Gradient blue footer */
             color: #fff;
             text-align: center;
             padding: 20px 0;
