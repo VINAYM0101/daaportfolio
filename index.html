@@ -21,6 +21,26 @@
             position: relative; /* For absolute positioning of elements */
         }
 
+        /* Snowflake Container */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            font-size: 1.5em;
+            color: white;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+
         /* Glowing Moon */
         .moon {
             position: absolute;
@@ -180,8 +200,8 @@
         </div>
 
         <div class="gif-container">
-            <img src="Animation1.gif" alt="Animated GIF 1">
-            <img src="Animation2.gif" alt="Animated GIF 2">
+            <img src="Animation1 - 1735525340233.gif" alt="Animated GIF 1">
+            <img src="Animation2 - 1735525233773.gif" alt="Animated GIF 2">
         </div>
     </main>
 
@@ -189,5 +209,29 @@
         <p>Designed by Vinay Madgi</p>
         <p>© 2024 Vinay Madgi. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        const snowContainer = document.createElement('div');
+        document.body.appendChild(snowContainer);
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄'; // Snowflake symbol
+            snowflake.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random fall speed
+            snowflake.style.opacity = Math.random(); // Random opacity
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Random size
+            snowContainer.appendChild(snowflake);
+
+            // Remove snowflake after animation ends
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // Generate snowflakes at intervals
+        setInterval(createSnowflake, 200);
+    </script>
 </body>
 </html>
