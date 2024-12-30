@@ -17,6 +17,27 @@
             min-height: 100vh;
             justify-content: space-between; /* Push footer to the bottom */
             align-items: center; /* Center the content horizontally */
+            overflow: hidden; /* Prevent scrollbars from appearing due to animation */
+        }
+
+        /* Snowflake Container */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            font-size: 1.5em;
+            color: white;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
         }
 
         /* Main Content */
@@ -24,6 +45,8 @@
             text-align: center;
             padding: 50px 20px;
             flex-grow: 1; /* Allows the main content to take up available space */
+            z-index: 10; /* Ensure main content is above snowfall */
+            position: relative;
         }
 
         h1.main-heading {
@@ -51,6 +74,7 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: transform 0.3s ease, background-color 0.3s ease;
+            z-index: 20; /* Ensure buttons are clickable */
         }
 
         /* Button Hover Effects */
@@ -68,7 +92,7 @@
             justify-content: center; /* Horizontally center the GIF */
             align-items: center; /* Vertically center (if needed within a container) */
             margin: 20px 0; /* Space around the GIF */
-        }    
+        }
 
         .gif-container img {
             max-width: 100%; /* Ensure responsiveness */
@@ -79,10 +103,12 @@
 
         /* Footer */
         footer {
-            background-color: #050C9C; /* Neon pink footer */
+            background-color: #050C9C; /* Dark blue footer */
             color: #fff;
             text-align: center;
             padding: 20px 0;
+            z-index: 10;
+            position: relative;
         }
 
         /* Animations */
@@ -132,12 +158,35 @@
         <div class="gif-container">
             <img src="1735525340233.gif" alt="Animated GIF" style="max-width: 100%; height: auto; margin: 20px 0;">
         </div>
-        
     </main>
 
     <footer>
         <p>Designed by Vinay Madgi</p>
         <p>© 2024 Vinay Madgi. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        const snowContainer = document.createElement('div');
+        document.body.appendChild(snowContainer);
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄'; // Snowflake symbol
+            snowflake.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random fall speed
+            snowflake.style.opacity = Math.random(); // Random opacity
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Random size
+            snowContainer.appendChild(snowflake);
+
+            // Remove snowflake after animation ends
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // Generate snowflakes at intervals
+        setInterval(createSnowflake, 200);
+    </script>
 </body>
 </html>
