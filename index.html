@@ -63,9 +63,18 @@
             transform: translateY(2px); /* Push the button down slightly when clicked */
         }
 
+        .gif-container {
+            display: flex;
+            justify-content: center; /* Horizontally center the GIF */
+            align-items: center; /* Vertically center (if needed within a container) */
+            margin: 20px 0; /* Space around the GIF */
+        }    
+
         .gif-container img {
-            border-radius: 10px; /* Add rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+            max-width: 100%; /* Ensure responsiveness */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Optional: Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Shadow effect */
         }
 
         /* Footer */
