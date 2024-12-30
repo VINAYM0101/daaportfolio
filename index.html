@@ -63,7 +63,7 @@
         }
 
         .btn {
-            background-color: #050C9C; /* dark blue */
+            background-color: #1E90FF; /* Dodger blue */
             color: #fff;
             font-size: 1.2em;
             padding: 15px 30px;
@@ -73,14 +73,15 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            z-index: 20; /* Ensure buttons are clickable */
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.6); /* Subtle glow effect */
         }
 
         /* Button Hover Effects */
         .btn:hover {
-            background-color: #ff69b4; /* Lighter pink on hover */
+            background-color: #00BFFF; /* Deep sky blue */
             transform: translateY(-5px); /* Lift the button on hover */
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.8); /* Glow effect intensifies */
         }
 
         .btn:active {
