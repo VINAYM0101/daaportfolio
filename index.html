@@ -159,9 +159,9 @@
 
         .gif-container {
             display: flex; /* Use flexbox for side-by-side layout */
-            justify-content: center; /* Center both GIFs horizontally */
+            justify-content: space-between; /* Space out GIFs horizontally */
             align-items: center; /* Align GIFs vertically (if needed) */
-            margin: 60px 0; /* Increased space around the GIF container */
+            margin: 60px 0; /* Space around the GIF container */
             gap: 20px; /* Add spacing between GIFs */
         }
 
@@ -170,6 +170,14 @@
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px; /* Optional: Rounded corners */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Shadow effect */
+        }
+
+        .gif-container img:first-child {
+            margin-left: -40px; /* Move the left GIF further left */
+        }
+
+        .gif-container img:last-child {
+            margin-right: -40px; /* Move the right GIF further right */
         }
 
         footer {
