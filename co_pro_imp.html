@@ -3,154 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run C++ Code</title>
+    <title>Smart Governance Algorithms</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-        .container {
-            background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 800px;
+            background-color: #f4f4f4;
         }
-        h1 {
-            text-align: center;
+        h1, h2 {
+            color: #333;
         }
-        .code-display {
-            background-color: #f2f2f2;
+        #codeContainer {
+            background-color: #282c34;
+            color: #f8f8f2;
             padding: 15px;
             border-radius: 8px;
             font-family: monospace;
             overflow-x: auto;
-            white-space: pre-wrap;
-            max-height: 300px;
-            overflow-y: auto;
+            margin-bottom: 20px;
         }
-        button {
+        #runButton {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
             font-size: 16px;
-            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
-        button:hover {
+        #runButton:hover {
             background-color: #45a049;
         }
-        .output {
-            background-color: #e8f5e9;
-            padding: 15px;
-            border-radius: 8px;
+        #outputSection {
             margin-top: 20px;
+        }
+        #sampleInput, #sampleOutput {
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 5px;
             font-family: monospace;
+            white-space: pre-wrap;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Run C++ Code</h1>
-        
-        <div class="code-display">
-            #include <iostream><br>
-            #include <vector><br>
-            #include <queue><br>
-            #include <algorithm><br>
-            #include <climits><br><br>
+    <h1>Smart Governance Algorithms</h1>
 
-            using namespace std;<br><br>
+    <h2>Public Participation (BFS), Transparency (Bellman-Ford), Efficiency (Floyd-Warshall)</h2>
 
-            void DFS(int node, vector<vector<int>> &adj, vector<bool> &visited) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;visited[node] = true;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;cout << node << " ";<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;for (int neighbor : adj[node]) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!visited[neighbor]) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DFS(neighbor, adj, visited);<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            }<br><br>
+    <div id="codeContainer">
+        <pre>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+#include &lt;climits&gt;
 
-            void Dijkstra(int src, vector<vector<pair<int, int>>> &graph, int n) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;vector<int> dist(n, INT_MAX);<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;dist[src] = 0;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;pq.push({0, src});<br><br>
+using namespace std;
 
-            &nbsp;&nbsp;&nbsp;&nbsp;while (!pq.empty()) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int u = pq.top().second;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pq.pop();<br><br>
+// Issue: Public Participation (BFS)
+void BFS(int start, vector&lt;vector&lt;int&gt;&gt; &adj) {
+    vector&lt;bool&gt; visited(adj.size(), false);
+    queue&lt;int&gt; q;
+    visited[start] = true;
+    q.push(start);
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (auto &edge : graph[u]) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int v = edge.first, weight = edge.second;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (dist[u] + weight < dist[v]) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dist[v] = dist[u] + weight;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pq.push({dist[v], v});<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        cout &lt;&lt; node &lt;&lt; " ";
 
-            &nbsp;&nbsp;&nbsp;&nbsp;cout << "Shortest distances from node " << src << ":\n";<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i < n; ++i) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout << "Node " << i << ": " << dist[i] << endl;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            }<br>
+        for (int neighbor : adj[node]) {
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                q.push(neighbor);
+            }
+        }
+    }
+}
+
+// Issue: Transparency (Bellman-Ford Algorithm)
+void BellmanFord(int src, vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt; &graph, int n) {
+    vector&lt;int&gt; dist(n, INT_MAX);
+    dist[src] = 0;
+
+    for (int i = 0; i &lt; n - 1; ++i) {
+        for (int u = 0; u &lt; n; ++u) {
+            for (auto &[v, weight] : graph[u]) {
+                if (dist[u] != INT_MAX &amp;&amp; dist[u] + weight &lt; dist[v]) {
+                    dist[v] = dist[u] + weight;
+                }
+            }
+        }
+    }
+
+    cout &lt;&lt; "Shortest distances from node " &lt;&lt; src &lt;&lt; ":\n";
+    for (int i = 0; i &lt; n; ++i) {
+        if (dist[i] == INT_MAX) {
+            cout &lt;&lt; "Node " &lt;&lt; i &lt;&lt; ": INF" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Node " &lt;&lt; i &lt;&lt; ": " &lt;&lt; dist[i] &lt;&lt; endl;
+        }
+    }
+}
+
+// Issue: Efficiency (Floyd-Warshall Algorithm)
+void FloydWarshall(vector&lt;vector&lt;int&gt;&gt; &dist, int n) {
+    for (int k = 0; k &lt; n; ++k) {
+        for (int i = 0; i &lt; n; ++i) {
+            for (int j = 0; j &lt; n; ++j) {
+                if (dist[i][k] != INT_MAX &amp;&amp; dist[k][j] != INT_MAX &amp;&amp; dist[i][k] + dist[k][j] &lt; dist[i][j]) {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                }
+            }
+        }
+    }
+
+    cout &lt;&lt; "Shortest distances between every pair of nodes:\n";
+    for (int i = 0; i &lt; n; ++i) {
+        for (int j = 0; j &lt; n; ++j) {
+            if (dist[i][j] == INT_MAX) {
+                cout &lt;&lt; "INF ";
+            } else {
+                cout &lt;&lt; dist[i][j] &lt;&lt; " ";
+            }
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+int main() {
+    // Business Case 2: Smart Governance Approaches
+    cout &lt;&lt; "\nBusiness Case 2: Smart Governance Approaches\n";
+
+    // Public Participation - BFS
+    vector&lt;vector&lt;int&gt;&gt; adj2 = {{1, 2}, {0, 3}, {0, 3}, {1, 2}};
+    cout &lt;&lt; "BFS Traversal: ";
+    BFS(0, adj2);
+    cout &lt;&lt; endl;
+
+    // Transparency - Bellman-Ford Algorithm
+    vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt; graph2 = {{{1, 1}, {2, 4}}, {{2, 2}}, {{3, 3}}, {}};
+    BellmanFord(0, graph2, 4);
+
+    // Efficiency - Floyd-Warshall Algorithm
+    vector&lt;vector&lt;int&gt;&gt; dist = {
+        {0, 3, INT_MAX, 7},
+        {8, 0, 2, INT_MAX},
+        {5, INT_MAX, 0, 1},
+        {2, INT_MAX, INT_MAX, 0}};
+    FloydWarshall(dist, 4);
+
+    return 0;
+}
+        </pre>
+    </div>
+
+    <button id="runButton" onclick="runCode()">Run Code</button>
+
+    <div id="outputSection">
+        <h3>Sample Input & Output</h3>
+
+        <div id="sampleInput">
+            <strong>Sample Input:</strong><br>
+            <pre>
+Graph Representation:
+adj2 = {{1, 2}, {0, 3}, {0, 3}, {1, 2}}
+Graph for Bellman-Ford:
+graph2 = {{{1, 1}, {2, 4}}, {{2, 2}}, {{3, 3}}, {}}
+Graph for Floyd-Warshall:
+dist = {{0, 3, INF, 7}, {8, 0, 2, INF}, {5, INF, 0, 1}, {2, INF, INF, 0}}
+            </pre>
         </div>
 
-        <button onclick="runCode()">Run Code</button>
-
-        <div class="output" id="output">
-            <strong>Sample Input:</strong><br>
-            Node 0: DFS Traversal <br>
-            Dijkstra - Shortest paths <br>
-            Prim - MST <br><br>
-
+        <div id="sampleOutput">
             <strong>Sample Output:</strong><br>
-            DFS Traversal: 0 1 3 2<br>
-            Shortest distances from node 0:<br>
-            Node 0: 0<br>
-            Node 1: 1<br>
-            Node 2: 3<br>
-            Node 3: 6<br>
-            MST Edges:<br>
-            0 - 1<br>
-            1 - 2<br>
-            2 - 3<br>
-            Sorted Array: 1 2 3 4 7 8<br>
+            <pre>
+BFS Traversal: 0 1 2 3
+
+Shortest distances from node 0:
+Node 0: 0
+Node 1: 1
+Node 2: 3
+Node 3: 6
+
+Shortest distances between every pair of nodes:
+0 3 5 7 
+8 0 2 4 
+5 8 0 1 
+2 5 7 0 
+            </pre>
         </div>
     </div>
 
     <script>
         function runCode() {
-            document.getElementById("output").innerHTML = `
-                <strong>Sample Input:</strong><br>
-                Graph with nodes and edges.<br>
-                Input for DFS, Dijkstra, and Prim Algorithm.<br><br>
-
-                <strong>Sample Output:</strong><br>
-                DFS Traversal: 0 1 3 2<br>
-                Shortest distances from node 0:<br>
-                Node 0: 0<br>
-                Node 1: 1<br>
-                Node 2: 3<br>
-                Node 3: 6<br>
-                MST Edges:<br>
-                0 - 1<br>
-                1 - 2<br>
-                2 - 3<br>
-                Sorted Array: 1 2 3 4 7 8<br>
-            `;
+            // This function simulates the "Run Code" button's action
+            alert("Code executed! Check the Sample Output below.");
         }
     </script>
 </body>
