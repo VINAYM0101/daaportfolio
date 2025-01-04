@@ -74,30 +74,149 @@
 #include <queue>
 #include <algorithm>
 #include <climits>
+#include <map>
 
 using namespace std;
 
-// Function for Depth-First Search (DFS)
-void dfs(int node, vector<vector<int>>& adj, vector<bool>& visited) {
-    visited[node] = true;
-    cout << node << " ";
-    for (int neighbor : adj[node]) {
-        if (!visited[neighbor]) {
-            dfs(neighbor, adj, visited);
+// Issue: Intermittency (Greedy Algorithm for Renewable Energy Storage)
+struct SolarPanel {
+    int capacity;
+    int cost;
+};
+
+bool compare(SolarPanel &a, SolarPanel &b) {
+    return a.cost < b.cost;
+}
+
+int minimumCostStorage(vector<SolarPanel> &panels, int energyRequired) {
+    sort(panels.begin(), panels.end(), compare);
+    int totalCost = 0;
+    int energyStored = 0;
+    
+    for (auto &panel : panels) {
+        if (energyStored >= energyRequired) {
+            break;
+        }
+        energyStored += panel.capacity;
+        totalCost += panel.cost;
+    }
+    return energyStored >= energyRequired ? totalCost : -1;
+}
+
+// Issue: High Costs (Bellman-Ford Algorithm)
+void BellmanFord(int src, vector<vector<pair<int, int>>> &graph, int n) {
+    vector<int> dist(n, INT_MAX);
+    dist[src] = 0;
+
+    for (int i = 0; i < n - 1; ++i) {
+        for (int u = 0; u < n; ++u) {
+            for (auto &[v, weight] : graph[u]) {
+                if (dist[u] != INT_MAX && dist[u] + weight < dist[v]) {
+                    dist[v] = dist[u] + weight;
+                }
+            }
+        }
+    }
+
+    cout << "Shortest distances from node " << src << ":\n";
+    for (int i = 0; i < n; ++i) {
+        if (dist[i] == INT_MAX) {
+            cout << "Node " << i << ": INF" << endl;
+        } else {
+            cout << "Node " << i << ": " << dist[i] << endl;
         }
     }
 }
 
-// Function for Breadth-First Search (BFS)
-void bfs(int start, vector<vector<int>>& adj, int n) {
-    vector<bool> visited(n, false);
+// Issue: Land Use (Kruskal's Algorithm)
+struct Edge {
+    int u, v, weight;
+};
+
+bool compareEdge(Edge &a, Edge &b) {
+    return a.weight < b.weight;
+}
+
+void Kruskal(vector<Edge> &edges, int n) {
+    vector<int> parent(n), rank(n, 0);
+
+    for (int i = 0; i < n; i++) {
+        parent[i] = i;
+    }
+
+    int mstWeight = 0;
+    vector<pair<int, int>> mstEdges;
+
+    for (auto &edge : edges) {
+        int u = edge.u, v = edge.v;
+        while (parent[u] != u) u = parent[u];
+        while (parent[v] != v) v = parent[v];
+        
+        if (u != v) {
+            mstEdges.push_back({edge.u, edge.v});
+            mstWeight += edge.weight;
+            if (rank[u] > rank[v]) {
+                parent[v] = u;
+            } else {
+                parent[u] = v;
+                if (rank[u] == rank[v]) {
+                    rank[v]++;
+                }
+            }
+        }
+    }
+
+    cout << "MST Edges:\n";
+    for (auto &edge : mstEdges) {
+        cout << edge.first << " - " << edge.second << endl;
+    }
+    cout << "Total MST Weight: " << mstWeight << endl;
+}
+
+// Issue: Recycling (Heap Sort)
+void heapify(vector<int> &arr, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+    if (right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(vector<int> &arr) {
+    int n = arr.size();
+    
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+
+    for (int i = n - 1; i >= 0; i--) {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+
+// Issue: Public Participation (Breadth-First Search)
+void BFS(int start, vector<vector<int>> &adj) {
+    vector<bool> visited(adj.size(), false);
     queue<int> q;
     visited[start] = true;
     q.push(start);
+
     while (!q.empty()) {
         int node = q.front();
         q.pop();
         cout << node << " ";
+
         for (int neighbor : adj[node]) {
             if (!visited[neighbor]) {
                 visited[neighbor] = true;
@@ -107,161 +226,76 @@ void bfs(int start, vector<vector<int>>& adj, int n) {
     }
 }
 
-// Function for Dijkstra's Algorithm
-void dijkstra(int source, vector<vector<int>>& adjMatrix, int n) {
-    vector<int> dist(n, INT_MAX);
-    dist[source] = 0;
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    pq.push({0, source});
-
-    while (!pq.empty()) {
-        int u = pq.top().second;
-        pq.pop();
-
-        for (int v = 0; v < n; ++v) {
-            if (adjMatrix[u][v] != INT_MAX && dist[u] + adjMatrix[u][v] < dist[v]) {
-                dist[v] = dist[u] + adjMatrix[u][v];
-                pq.push({dist[v], v});
-            }
-        }
-    }
-
-    for (int i = 0; i < n; ++i) {
-        cout << "Node " << i << ": " << dist[i] << endl;
-    }
-}
-
-// Function for Prim's Algorithm (Minimum Spanning Tree)
-void primsMST(vector<vector<int>>& adjMatrix, int n) {
-    vector<bool> inMST(n, false);
-    vector<int> key(n, INT_MAX);
-    vector<int> parent(n, -1);
-    key[0] = 0;
-
-    for (int count = 0; count < n - 1; ++count) {
-        int u = -1;
+// Issue: Transparency (Floyd-Warshall Algorithm)
+void FloydWarshall(vector<vector<int>> &dist, int n) {
+    for (int k = 0; k < n; ++k) {
         for (int i = 0; i < n; ++i) {
-            if (!inMST[i] && (u == -1 || key[i] < key[u])) {
-                u = i;
-            }
-        }
-        inMST[u] = true;
-
-        for (int v = 0; v < n; ++v) {
-            if (adjMatrix[u][v] != INT_MAX && !inMST[v] && adjMatrix[u][v] < key[v]) {
-                key[v] = adjMatrix[u][v];
-                parent[v] = u;
-            }
-        }
-    }
-
-    cout << "MST Edges:" << endl;
-    for (int i = 1; i < n; ++i) {
-        cout << parent[i] << " - " << i << endl;
-    }
-}
-
-// Function for QuickSort
-void quicksort(vector<int>& arr, int low, int high) {
-    if (low < high) {
-        int pivot = arr[high];
-        int i = low - 1;
-        for (int j = low; j < high; ++j) {
-            if (arr[j] <= pivot) {
-                ++i;
-                swap(arr[i], arr[j]);
-            }
-        }
-        swap(arr[i + 1], arr[high]);
-        int pi = i + 1;
-        quicksort(arr, low, pi - 1);
-        quicksort(arr, pi + 1, high);
-    }
-}
-
-// Bellman-Ford Algorithm (for negative weight cycle detection)
-void bellmanFord(vector<vector<int>>& graph, int V, int E, int src) {
-    vector<int> dist(V, INT_MAX);
-    dist[src] = 0;
-
-    for (int i = 1; i < V; ++i) {
-        for (int j = 0; j < E; ++j) {
-            if (dist[graph[j][0]] != INT_MAX && dist[graph[j][0]] + graph[j][2] < dist[graph[j][1]]) {
-                dist[graph[j][1]] = dist[graph[j][0]] + graph[j][2];
-            }
-        }
-    }
-
-    for (int i = 0; i < E; ++i) {
-        if (dist[graph[i][0]] != INT_MAX && dist[graph[i][0]] + graph[i][2] < dist[graph[i][1]]) {
-            cout << "Graph contains negative weight cycle" << endl;
-            return;
-        }
-    }
-
-    for (int i = 0; i < V; ++i) {
-        cout << "Node " << i << ": " << dist[i] << endl;
-    }
-}
-
-// Floyd-Warshall Algorithm (for all-pairs shortest path)
-void floydWarshall(vector<vector<int>>& graph, int V) {
-    vector<vector<int>> dist = graph;
-    for (int k = 0; k < V; ++k) {
-        for (int i = 0; i < V; ++i) {
-            for (int j = 0; j < V; ++j) {
-                if (dist[i][k] != INT_MAX && dist[k][j] != INT_MAX &&
-                    dist[i][k] + dist[k][j] < dist[i][j]) {
+            for (int j = 0; j < n; ++j) {
+                if (dist[i][k] != INT_MAX && dist[k][j] != INT_MAX && dist[i][k] + dist[k][j] < dist[i][j]) {
                     dist[i][j] = dist[i][k] + dist[k][j];
                 }
             }
         }
     }
 
-    cout << "Shortest distances between every pair of nodes:" << endl;
-    for (int i = 0; i < V; ++i) {
-        for (int j = 0; j < V; ++j) {
-            if (dist[i][j] == INT_MAX) cout << "INF ";
-            else cout << dist[i][j] << " ";
+    cout << "Shortest distances between every pair of nodes:\n";
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (dist[i][j] == INT_MAX) {
+                cout << "INF ";
+            } else {
+                cout << dist[i][j] << " ";
+            }
         }
         cout << endl;
     }
 }
 
-// Kruskal's Algorithm (Minimum Spanning Tree)
-struct Edge {
-    int u, v, weight;
-    bool operator<(const Edge& e) {
-        return weight < e.weight;
+int main() {
+    // Business Case 1: Renewable Energy
+    cout << "Business Case 1: Renewable Energy\n";
+
+    // Intermittency - Greedy Algorithm for Renewable Energy Storage
+    vector<SolarPanel> panels = {{50, 300}, {60, 500}, {100, 1000}, {80, 400}};
+    int energyRequired = 200;
+    int cost = minimumCostStorage(panels, energyRequired);
+    cout << "Minimum cost for storing " << energyRequired << " units of energy: " << cost << endl;
+
+    // High Costs - Bellman-Ford Algorithm
+    vector<vector<pair<int, int>>> graph1 = {{{1, 1}, {2, 4}}, {{0, 1}, {2, 2}, {3, 6}}, {{0, 4}, {1, 2}, {3, 3}}, {{1, 6}, {2, 3}}};
+    BellmanFord(0, graph1, 4);
+
+    // Land Use - Kruskal's Algorithm
+    vector<Edge> edges = {{0, 1, 4}, {1, 2, 1}, {0, 2, 5}, {2, 3, 2}, {1, 3, 7}};
+    Kruskal(edges, 4);
+
+    // Recycling - Heap Sort
+    vector<int> arr = {4, 2, 7, 3, 8, 1};
+    heapSort(arr);
+    cout << "Sorted Array (Recycling): ";
+    for (int num : arr) {
+        cout << num << " ";
     }
-};
+    cout << endl;
 
-int findParent(int u, vector<int>& parent) {
-    if (parent[u] == u) return u;
-    return parent[u] = findParent(parent[u], parent);
-}
+    // Business Case 2: Smart Governance Approaches
+    cout << "\nBusiness Case 2: Smart Governance Approaches\n";
 
-void kruskal(vector<Edge>& edges, int V) {
-    sort(edges.begin(), edges.end());
-    vector<int> parent(V);
-    for (int i = 0; i < V; ++i) parent[i] = i;
+    // Public Participation - BFS
+    vector<vector<int>> adj2 = {{1, 2}, {0, 3}, {0, 3}, {1, 2}};
+    cout << "BFS Traversal: ";
+    BFS(0, adj2);
+    cout << endl;
 
-    vector<Edge> mst;
+    // Transparency - Floyd-Warshall Algorithm
+    vector<vector<int>> dist = {
+        {0, 3, INT_MAX, 7},
+        {8, 0, 2, INT_MAX},
+        {5, INT_MAX, 0, 1},
+        {2, INT_MAX, INT_MAX, 0}};
+    FloydWarshall(dist, 4);
 
-    for (Edge& edge : edges) {
-        int u = findParent(edge.u, parent);
-        int v = findParent(edge.v, parent);
-
-        if (u != v) {
-            mst.push_back(edge);
-            parent[u] = v;
-        }
-    }
-
-    cout << "Kruskal's MST Edges:" << endl;
-    for (Edge& e : mst) {
-        cout << e.u << " - " << e.v << " (" << e.weight << ")" << endl;
-    }
+    return 0;
 }
 
 int main() {
