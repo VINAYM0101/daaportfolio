@@ -3,414 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart City Algorithms</title>
+    <title>Run C++ Code</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
         .container {
-            max-width: 900px;
-            margin: 20px auto;
+            background-color: #fff;
             padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
         }
-        .header {
+        h1 {
             text-align: center;
-            margin-bottom: 20px;
         }
-        .header h1 {
-            font-size: 24px;
-            color: #333333;
-        }
-        .code-viewer {
-            background-color: #2d2d2d;
-            color: #ffffff;
+        .code-display {
+            background-color: #f2f2f2;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-family: monospace;
             overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
         }
-        .code-viewer pre {
-            margin: 0;
-        }
-        .run-button {
-            display: block;
-            width: 100%;
-            background-color: #007bff;
+        button {
+            background-color: #4CAF50;
             color: white;
+            padding: 10px 20px;
             border: none;
-            padding: 10px;
-            font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
         }
-        .run-button:hover {
-            background-color: #0056b3;
+        button:hover {
+            background-color: #45a049;
         }
         .output {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
             margin-top: 20px;
-            background-color: #e9ecef;
-            padding: 10px;
-            border-radius: 5px;
-            white-space: pre-wrap;
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Smart City Algorithms</h1>
-        </div>
-        <div class="code-viewer">
-            <pre id="code">
-// Full Implementation of Smart City Design Business Cases in C++
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <algorithm>
-#include <climits>
-#include <map>
-
-using namespace std;
-
-// Issue: Intermittency (Greedy Algorithm for Renewable Energy Storage)
-struct SolarPanel {
-    int capacity;
-    int cost;
-};
-
-bool compare(SolarPanel &a, SolarPanel &b) {
-    return a.cost < b.cost;
-}
-
-int minimumCostStorage(vector<SolarPanel> &panels, int energyRequired) {
-    sort(panels.begin(), panels.end(), compare);
-    int totalCost = 0;
-    int energyStored = 0;
-    
-    for (auto &panel : panels) {
-        if (energyStored >= energyRequired) {
-            break;
-        }
-        energyStored += panel.capacity;
-        totalCost += panel.cost;
-    }
-    return energyStored >= energyRequired ? totalCost : -1;
-}
-
-// Issue: High Costs (Bellman-Ford Algorithm)
-void BellmanFord(int src, vector<vector<pair<int, int>>> &graph, int n) {
-    vector<int> dist(n, INT_MAX);
-    dist[src] = 0;
-
-    for (int i = 0; i < n - 1; ++i) {
-        for (int u = 0; u < n; ++u) {
-            for (auto &[v, weight] : graph[u]) {
-                if (dist[u] != INT_MAX && dist[u] + weight < dist[v]) {
-                    dist[v] = dist[u] + weight;
-                }
-            }
-        }
-    }
-
-    cout << "Shortest distances from node " << src << ":\n";
-    for (int i = 0; i < n; ++i) {
-        if (dist[i] == INT_MAX) {
-            cout << "Node " << i << ": INF" << endl;
-        } else {
-            cout << "Node " << i << ": " << dist[i] << endl;
-        }
-    }
-}
-
-// Issue: Land Use (Kruskal's Algorithm)
-struct Edge {
-    int u, v, weight;
-};
-
-bool compareEdge(Edge &a, Edge &b) {
-    return a.weight < b.weight;
-}
-
-void Kruskal(vector<Edge> &edges, int n) {
-    vector<int> parent(n), rank(n, 0);
-
-    for (int i = 0; i < n; i++) {
-        parent[i] = i;
-    }
-
-    int mstWeight = 0;
-    vector<pair<int, int>> mstEdges;
-
-    for (auto &edge : edges) {
-        int u = edge.u, v = edge.v;
-        while (parent[u] != u) u = parent[u];
-        while (parent[v] != v) v = parent[v];
+        <h1>Run C++ Code</h1>
         
-        if (u != v) {
-            mstEdges.push_back({edge.u, edge.v});
-            mstWeight += edge.weight;
-            if (rank[u] > rank[v]) {
-                parent[v] = u;
-            } else {
-                parent[u] = v;
-                if (rank[u] == rank[v]) {
-                    rank[v]++;
-                }
-            }
-        }
-    }
+        <div class="code-display">
+            #include <iostream><br>
+            #include <vector><br>
+            #include <queue><br>
+            #include <algorithm><br>
+            #include <climits><br><br>
 
-    cout << "MST Edges:\n";
-    for (auto &edge : mstEdges) {
-        cout << edge.first << " - " << edge.second << endl;
-    }
-    cout << "Total MST Weight: " << mstWeight << endl;
-}
+            using namespace std;<br><br>
 
-// Issue: Recycling (Heap Sort)
-void heapify(vector<int> &arr, int n, int i) {
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
+            void DFS(int node, vector<vector<int>> &adj, vector<bool> &visited) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;visited[node] = true;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;cout << node << " ";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;for (int neighbor : adj[node]) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!visited[neighbor]) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DFS(neighbor, adj, visited);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            }<br><br>
 
-    if (left < n && arr[left] > arr[largest]) {
-        largest = left;
-    }
-    if (right < n && arr[right] > arr[largest]) {
-        largest = right;
-    }
+            void Dijkstra(int src, vector<vector<pair<int, int>>> &graph, int n) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;vector<int> dist(n, INT_MAX);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;dist[src] = 0;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;pq.push({0, src});<br><br>
 
-    if (largest != i) {
-        swap(arr[i], arr[largest]);
-        heapify(arr, n, largest);
-    }
-}
+            &nbsp;&nbsp;&nbsp;&nbsp;while (!pq.empty()) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int u = pq.top().second;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pq.pop();<br><br>
 
-void heapSort(vector<int> &arr) {
-    int n = arr.size();
-    
-    for (int i = n / 2 - 1; i >= 0; i--) {
-        heapify(arr, n, i);
-    }
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (auto &edge : graph[u]) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int v = edge.first, weight = edge.second;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (dist[u] + weight < dist[v]) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dist[v] = dist[u] + weight;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pq.push({dist[v], v});<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
 
-    for (int i = n - 1; i >= 0; i--) {
-        swap(arr[0], arr[i]);
-        heapify(arr, i, 0);
-    }
-}
-
-// Issue: Public Participation (Breadth-First Search)
-void BFS(int start, vector<vector<int>> &adj) {
-    vector<bool> visited(adj.size(), false);
-    queue<int> q;
-    visited[start] = true;
-    q.push(start);
-
-    while (!q.empty()) {
-        int node = q.front();
-        q.pop();
-        cout << node << " ";
-
-        for (int neighbor : adj[node]) {
-            if (!visited[neighbor]) {
-                visited[neighbor] = true;
-                q.push(neighbor);
-            }
-        }
-    }
-}
-
-// Issue: Transparency (Floyd-Warshall Algorithm)
-void FloydWarshall(vector<vector<int>> &dist, int n) {
-    for (int k = 0; k < n; ++k) {
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (dist[i][k] != INT_MAX && dist[k][j] != INT_MAX && dist[i][k] + dist[k][j] < dist[i][j]) {
-                    dist[i][j] = dist[i][k] + dist[k][j];
-                }
-            }
-        }
-    }
-
-    cout << "Shortest distances between every pair of nodes:\n";
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            if (dist[i][j] == INT_MAX) {
-                cout << "INF ";
-            } else {
-                cout << dist[i][j] << " ";
-            }
-        }
-        cout << endl;
-    }
-}
-
-int main() {
-    // Business Case 1: Renewable Energy
-    cout << "Business Case 1: Renewable Energy\n";
-
-    // Intermittency - Greedy Algorithm for Renewable Energy Storage
-    vector<SolarPanel> panels = {{50, 300}, {60, 500}, {100, 1000}, {80, 400}};
-    int energyRequired = 200;
-    int cost = minimumCostStorage(panels, energyRequired);
-    cout << "Minimum cost for storing " << energyRequired << " units of energy: " << cost << endl;
-
-    // High Costs - Bellman-Ford Algorithm
-    vector<vector<pair<int, int>>> graph1 = {{{1, 1}, {2, 4}}, {{0, 1}, {2, 2}, {3, 6}}, {{0, 4}, {1, 2}, {3, 3}}, {{1, 6}, {2, 3}}};
-    BellmanFord(0, graph1, 4);
-
-    // Land Use - Kruskal's Algorithm
-    vector<Edge> edges = {{0, 1, 4}, {1, 2, 1}, {0, 2, 5}, {2, 3, 2}, {1, 3, 7}};
-    Kruskal(edges, 4);
-
-    // Recycling - Heap Sort
-    vector<int> arr = {4, 2, 7, 3, 8, 1};
-    heapSort(arr);
-    cout << "Sorted Array (Recycling): ";
-    for (int num : arr) {
-        cout << num << " ";
-    }
-    cout << endl;
-
-    // Business Case 2: Smart Governance Approaches
-    cout << "\nBusiness Case 2: Smart Governance Approaches\n";
-
-    // Public Participation - BFS
-    vector<vector<int>> adj2 = {{1, 2}, {0, 3}, {0, 3}, {1, 2}};
-    cout << "BFS Traversal: ";
-    BFS(0, adj2);
-    cout << endl;
-
-    // Transparency - Floyd-Warshall Algorithm
-    vector<vector<int>> dist = {
-        {0, 3, INT_MAX, 7},
-        {8, 0, 2, INT_MAX},
-        {5, INT_MAX, 0, 1},
-        {2, INT_MAX, INT_MAX, 0}};
-    FloydWarshall(dist, 4);
-
-    return 0;
-}
-
-int main() {
-    // Business Case 1: Renewable Energy
-    vector<vector<int>> adj = {
-        {1, 3},
-        {0, 2},
-        {1, 3},
-        {0, 2}
-    };
-    int n = adj.size();
-
-    vector<bool> visited(n, false);
-    cout << "DFS Traversal: ";
-    dfs(0, adj, visited);
-    cout << endl;
-
-    cout << "BFS Traversal: ";
-    bfs(0, adj, n);
-    cout << endl;
-
-    vector<vector<int>> adjMatrix = {
-        {0, 1, INT_MAX, 3},
-        {1, 0, 3, 8},
-        {INT_MAX, 3, 0, 2},
-        {3, 8, 2, 0}
-    };
-    cout << "Shortest distances from node 0:" << endl;
-    dijkstra(0, adjMatrix, n);
-    cout << endl;
-
-    cout << "MST Edges:" << endl;
-    primsMST(adjMatrix, n);
-    cout << endl;
-
-    vector<int> arr = {7, 3, 1, 8, 2, 4};
-    cout << "Sorted Array: ";
-    quicksort(arr, 0, arr.size() - 1);
-    for (int num : arr) {
-        cout << num << " ";
-    }
-    cout << endl;
-
-    // Business Case 2: Smart Governance Approaches
-    cout << "\nBusiness Case 2: Smart Governance Approaches" << endl;
-
-    // Bellman-Ford Algorithm
-    vector<vector<int>> graph = {
-        {0, 1, -1},
-        {0, 2, 4},
-        {1, 2, 3},
-        {1, 3, 2},
-        {1, 4, 2},
-        {3, 2, 5},
-        {3, 4, 1},
-        {4, 3, -3}
-    };
-    bellmanFord(graph, 5, 8, 0);
-
-    // Floyd-Warshall Algorithm
-    vector<vector<int>> floydGraph = {
-        {0, 3, INT_MAX, INT_MAX},
-        {INT_MAX, 0, 1, INT_MAX},
-        {INT_MAX, INT_MAX, 0, 7},
-        {2, INT_MAX, INT_MAX, 0}
-    };
-    floydWarshall(floydGraph, 4);
-
-    // Kruskal's Algorithm
-    vector<Edge> edges = {
-        {0, 1, 10}, {0, 2, 6}, {0, 3, 5},
-        {1, 3, 15}, {2, 3, 4}
-    };
-    kruskal(edges, 4);
-
-    return 0;
-}
-            </pre>
+            &nbsp;&nbsp;&nbsp;&nbsp;cout << "Shortest distances from node " << src << ":\n";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i < n; ++i) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout << "Node " << i << ": " << dist[i] << endl;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            }<br>
         </div>
-        <button class="run-button" onclick="showOutput()">Run Code</button>
-        <div class="output" id="output" style="display: none;">
-            <strong>Sample Output:</strong>
-            <pre>
-Business Case 1: Renewable Energy
-DFS Traversal: 0 1 3 2
-BFS Traversal: 0 1 2 3
-Shortest distances from node 0:
-Node 0: 0
-Node 1: 1
-Node 2: 3
-Node 3: 6
-MST Edges:
-0 - 1
-1 - 2
-2 - 3
-Sorted Array: 1 2 3 4 7 8
 
-Business Case 2: Smart Governance Approaches
-Graph contains negative weight cycle
-Shortest distances between every pair of nodes:
-0 3 INF INF 
-INF 0 1 INF 
-INF INF 0 7 
-2 INF INF 0 
-Kruskal's MST Edges:
-0 - 3 (5)
-2 - 3 (4)
-0 - 1 (10)
-            </pre>
+        <button onclick="runCode()">Run Code</button>
+
+        <div class="output" id="output">
+            <strong>Sample Input:</strong><br>
+            Node 0: DFS Traversal <br>
+            Dijkstra - Shortest paths <br>
+            Prim - MST <br><br>
+
+            <strong>Sample Output:</strong><br>
+            DFS Traversal: 0 1 3 2<br>
+            Shortest distances from node 0:<br>
+            Node 0: 0<br>
+            Node 1: 1<br>
+            Node 2: 3<br>
+            Node 3: 6<br>
+            MST Edges:<br>
+            0 - 1<br>
+            1 - 2<br>
+            2 - 3<br>
+            Sorted Array: 1 2 3 4 7 8<br>
         </div>
     </div>
+
     <script>
-        function showOutput() {
-            const outputDiv = document.getElementById('output');
-            outputDiv.style.display = 'block';
+        function runCode() {
+            document.getElementById("output").innerHTML = `
+                <strong>Sample Input:</strong><br>
+                Graph with nodes and edges.<br>
+                Input for DFS, Dijkstra, and Prim Algorithm.<br><br>
+
+                <strong>Sample Output:</strong><br>
+                DFS Traversal: 0 1 3 2<br>
+                Shortest distances from node 0:<br>
+                Node 0: 0<br>
+                Node 1: 1<br>
+                Node 2: 3<br>
+                Node 3: 6<br>
+                MST Edges:<br>
+                0 - 1<br>
+                1 - 2<br>
+                2 - 3<br>
+                Sorted Array: 1 2 3 4 7 8<br>
+            `;
         }
     </script>
 </body>
