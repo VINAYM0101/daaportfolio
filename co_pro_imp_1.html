@@ -44,6 +44,32 @@
             font-family: monospace;
             white-space: pre-wrap;
         }
+        /* Buttons */
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .btn {
+            background-color: #1E90FF; /* Dodger blue */
+            color: #fff;
+            font-size: 1.2em;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.6); /* Subtle glow effect */
+        }
+
+        .btn:hover {
+            background-color: #00BFFF; /* Deep sky blue */
+            transform: translateY(-5px); /* Lift the button on hover */
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.8); /* Glow effect intensifies */
+        }
+
     </style>
 </head>
 <body>
